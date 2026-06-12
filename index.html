@@ -58,7 +58,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Manrope:wght@400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -72,13 +72,7 @@
        ============================================================ -->
   <header class="nav" id="nav">
     <a class="nav__logo" href="#home" aria-label="RPS home">
-      <svg viewBox="0 0 40 40" class="nav__mark" aria-hidden="true">
-        <circle cx="20" cy="20" r="18" fill="none" stroke="url(#lg)" stroke-width="2.5"/>
-        <path d="M12 27V13h7a5 5 0 0 1 0 10h-4l9 4" fill="none" stroke="url(#lg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#2BD9D4"/><stop offset="1" stop-color="#8B5CF6"/>
-        </linearGradient></defs>
-      </svg>
+      <img src="assets/img/rps-mark.png" alt="" class="nav__mark" width="34" height="34">
       <span>RPS</span>
     </a>
     <nav class="nav__links" aria-label="Main navigation">
@@ -103,6 +97,9 @@
        HERO
        ============================================================ -->
   <section class="hero" id="home">
+    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline
+           poster="assets/video/rps-hero-poster.jpg" aria-hidden="true"></video>
+    <div class="hero__scrim" aria-hidden="true"></div>
     <div class="hero__glow" aria-hidden="true"></div>
     <p class="cue cue--hero"><span class="cue__num">CUE 0.5</span><span class="cue__state">STANDBY</span></p>
     <h1 class="hero__title">
@@ -152,38 +149,105 @@
   <section class="section" id="pillars">
     <p class="cue reveal"><span class="cue__num">CUE 2.0</span><span class="cue__state">GO</span></p>
     <h2 class="section__title reveal">Six pillars. <em>One service.</em></h2>
+    <p class="section__lead reveal">One cohesive service, six connected disciplines. Tap a segment to jump
+      to the detail — every part of the wheel feeds the others.</p>
+
+    <!-- OSM wheel — each segment links to its pillar card below -->
+    <div class="wheel reveal" role="navigation" aria-label="OSM service wheel">
+      <svg viewBox="0 0 480 480" class="wheel__svg">
+        <defs>
+          <linearGradient id="hubGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#00ebb4"/><stop offset="1" stop-color="#008cf5"/>
+          </linearGradient>
+        </defs>
+
+        <a href="#p1" class="seg" style="--accent:#008cf5" aria-label="Triage Intelligence">
+          <path d="M248.4 48.2 A192 192 0 0 1 401.9 136.8 L317.6 190.6 A92 92 0 0 0 244.0 148.1 Z"/>
+          <g transform="translate(311,117)">
+            <path class="seg__icon" d="M3 -10 L-5 2 H0 L-2 11 L7 -2 H2 Z" fill="currentColor" stroke="none"/>
+            <text y="28">TRIAGE</text>
+          </g>
+        </a>
+        <a href="#p3" class="seg" style="--accent:#00ebb4" aria-label="System Health and Reporting">
+          <path d="M410.3 151.3 A192 192 0 0 1 410.3 328.7 L321.6 282.5 A92 92 0 0 0 321.6 197.5 Z"/>
+          <g transform="translate(382,240)">
+            <path class="seg__icon" d="M-11 0 h5 l3 -8 4 15 3 -7 h7" fill="none"/>
+            <text y="26">HEALTH</text>
+          </g>
+        </a>
+        <a href="#p5" class="seg" style="--accent:#008cf5" aria-label="Spares, Repairs and Maintenance">
+          <path d="M401.9 343.2 A192 192 0 0 1 248.4 431.8 L244.0 331.9 A92 92 0 0 0 317.6 289.4 Z"/>
+          <g transform="translate(311,363)">
+            <path class="seg__icon" d="M0 -11 L10 -5.5 V5.5 L0 11 L-10 5.5 V-5.5 Z M-10 -5.5 L0 0 L10 -5.5 M0 0 V11" fill="none"/>
+            <text y="30">SPARES</text>
+          </g>
+        </a>
+        <a href="#p6" class="seg" style="--accent:#00beeb" aria-label="Training and Knowledge">
+          <path d="M231.6 431.8 A192 192 0 0 1 78.1 343.2 L162.4 289.4 A92 92 0 0 0 236.0 331.9 Z"/>
+          <g transform="translate(169,363)">
+            <path class="seg__icon" d="M-11 -4 L0 -9 L11 -4 L0 1 Z M-6 -1.5 V4 C-6 6 -3 7.5 0 7.5 S6 6 6 4 V-1.5" fill="none"/>
+            <text y="30">TRAINING</text>
+          </g>
+        </a>
+        <a href="#p4" class="seg" style="--accent:#FFA13B" aria-label="Lifecycle Management">
+          <path d="M69.7 328.7 A192 192 0 0 1 69.7 151.3 L158.4 197.5 A92 92 0 0 0 158.4 282.5 Z"/>
+          <g transform="translate(98,240)">
+            <path class="seg__icon" d="M9 -5 A10 10 0 1 0 9 5 M9 -9 V-5 H5" fill="none"/>
+            <text y="28">LIFECYCLE</text>
+          </g>
+        </a>
+        <a href="#p2" class="seg" style="--accent:#00beeb" aria-label="Engineer Access">
+          <path d="M78.1 136.8 A192 192 0 0 1 231.6 48.2 L236.0 148.1 A92 92 0 0 0 162.4 190.6 Z"/>
+          <g transform="translate(169,117)">
+            <path class="seg__icon" d="M9 -7 A6 6 0 0 1 1.5 0.5 L-6 8 A2.5 2.5 0 0 1 -9.5 4.5 L-2 -3 A6 6 0 0 1 5.5 -10.5 L2 -7 L5 -4 L8.5 -7.5 Z" fill="none"/>
+            <text y="28">ENGINEERS</text>
+          </g>
+        </a>
+
+        <circle cx="240" cy="240" r="74" fill="#0D1726" stroke="url(#hubGrad)" stroke-width="2.5"/>
+        <text x="240" y="232" class="wheel__hub">OSM</text>
+        <text x="240" y="258" class="wheel__hubsub">END TO END</text>
+      </svg>
+    </div>
+
     <div class="pillars">
-      <article class="pillar reveal" style="--accent:#4D7CFE">
+      <article class="pillar reveal" id="p1" style="--accent:#008cf5">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3 L7 12 H11.5 L10 21 L17 9 H12.5 Z" fill="currentColor"/></svg></span>
         <span class="pillar__num">01</span>
         <h3>Triage Intelligence</h3>
         <p>Smart. Structured. Fast. Our Triage App captures, categorises and prioritises issues to get the
           right information to the right people — fast.</p>
       </article>
-      <article class="pillar reveal" style="--accent:#8B5CF6">
+      <article class="pillar reveal" id="p2" style="--accent:#00beeb">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 6 A5 5 0 0 1 12.5 12 L6 18.5 A2.2 2.2 0 0 1 2.9 15.4 L9.4 9 A5 5 0 0 1 15.5 2.4 L12.5 5.4 L15 7.9 L18 4.9 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
         <span class="pillar__num">02</span>
         <h3>Engineer Access</h3>
         <p>Expertise at your fingertips. A whole-support partnership with experienced automation engineers,
           remote and on-site — efficient and effective.</p>
       </article>
-      <article class="pillar reveal" style="--accent:#2BD9D4">
+      <article class="pillar reveal" id="p3" style="--accent:#00ebb4">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12 h5 l2.5 -7 3.5 14 2.5 -7 h6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="pillar__num">03</span>
         <h3>System Health &amp; Reporting</h3>
         <p>Visibility you can act on. We inspect, monitor and audit system health, identify risks early and
           provide clear reporting — including <a href="#plans">LOLER inspection</a> — so you stay in control.</p>
       </article>
-      <article class="pillar reveal" style="--accent:#FFA13B">
+      <article class="pillar reveal" id="p4" style="--accent:#FFA13B">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 8 A8.5 8.5 0 1 0 19 16 M19 3.5 V8 H14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="pillar__num">04</span>
         <h3>Lifecycle Management</h3>
         <p>Plan ahead. Stay ahead. Upgrade paths, legacy refurbs and obsolescence planning keep your systems
           reliable and future-ready.</p>
       </article>
-      <article class="pillar reveal" style="--accent:#7BC96A">
+      <article class="pillar reveal" id="p5" style="--accent:#008cf5">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5 L21 7.5 V16.5 L12 21.5 L3 16.5 V7.5 Z M3 7.5 L12 12.5 L21 7.5 M12 12.5 V21.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
         <span class="pillar__num">05</span>
         <h3>Spares, Repairs &amp; Maintenance</h3>
         <p>Right parts. Right time. We help you plan and manage spares, consumables and
           <a href="#plans">maintenance</a> so you're prepared — not caught out.</p>
       </article>
-      <article class="pillar reveal" style="--accent:#E8B64C">
+      <article class="pillar reveal" id="p6" style="--accent:#00beeb">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1.5 8.5 L12 3.5 L22.5 8.5 L12 13.5 Z M6 11 V16 C6 18 8.7 19.5 12 19.5 S18 18 18 16 V11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
         <span class="pillar__num">06</span>
         <h3>Training &amp; Knowledge</h3>
         <p>A learning platform and documentation so your team has the knowledge to operate and maintain
@@ -243,6 +307,13 @@
     </div>
     <p class="plans__cta reveal"><a class="btn btn--amber" href="mailto:info@1rps.com?subject=Service%20plan%20enquiry">Ask about a plan</a></p>
   </section>
+
+  <!-- ============================================================
+       HARDWARE DIVIDER
+       ============================================================ -->
+  <div class="band reveal" role="img" aria-label="Polished stage rigging hardware in close-up">
+    <p class="band__line">The hardware behind the magic — <strong>inspected, maintained, show-ready.</strong></p>
+  </div>
 
   <!-- ============================================================
        TRAINING
@@ -320,6 +391,7 @@
        FOOTER
        ============================================================ -->
   <footer class="footer">
+    <img src="assets/img/rps-logo-full.png" alt="Resolution Production Services" class="footer__logo" width="280" loading="lazy">
     <nav class="footer__links" aria-label="Footer navigation">
       <a href="#home">Home</a>
       <a href="#osm">OSM</a>

@@ -2,6 +2,19 @@
 (() => {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Hero video — portrait source on phones, landscape elsewhere.
+     Reduced-motion users keep the static poster frame. */
+  const vid = document.getElementById("heroVideo");
+  if (vid) {
+    if (reduced) {
+      vid.removeAttribute("autoplay");
+    } else {
+      const portrait = window.matchMedia("(max-width: 680px) and (orientation: portrait)").matches;
+      vid.src = portrait ? "assets/video/rps-hero-mobile.mp4" : "assets/video/rps-hero.mp4";
+      if (portrait) vid.poster = "assets/video/rps-hero-mobile-poster.jpg";
+    }
+  }
+
   /* Scroll-triggered reveals */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
