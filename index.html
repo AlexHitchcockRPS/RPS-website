@@ -98,9 +98,6 @@
        HERO
        ============================================================ -->
   <section class="hero" id="home">
-    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline
-           poster="assets/video/rps-hero-poster.jpg" aria-hidden="true"></video>
-    <div class="hero__scrim" aria-hidden="true"></div>
     <div class="hero__glow" aria-hidden="true"></div>
     <p class="cue cue--hero"><span class="cue__num">CUE 0.5</span><span class="cue__state">STANDBY</span></p>
     <h1 class="hero__title">
@@ -129,29 +126,20 @@
   </section>
 
   <!-- ============================================================
+       VIDEO BAND — hero film reduced to a quiet strip
+       ============================================================ -->
+  <div class="video-band" aria-hidden="true">
+    <video class="video-band__video" id="heroVideo" autoplay muted loop playsinline
+           poster="assets/video/rps-hero-poster.jpg"></video>
+    <div class="video-band__scrim"></div>
+  </div>
+
+  <!-- ============================================================
        OSM INTRO
        ============================================================ -->
   <section class="section" id="osm">
     <p class="cue reveal"><span class="cue__num">CUE 1.0</span><span class="cue__state">GO</span></p>
     <h2 class="section__title reveal">Operational Systems <em>Management</em></h2>
-    <p class="section__lead reveal">OSM is our comprehensive service that manages your automation systems
-      across their entire lifecycle — proactive, end-to-end, on your terms. Structured support that means
-      <strong>fewer failures, faster resolution</strong> and a team that can focus on the show.</p>
-    <div class="osm-badges reveal">
-      <div class="osm-badge"><h3>Structured. Proactive.</h3><p>On your terms — from one-off <a href="#plans">inspections</a> to a fully managed PPM programme.</p></div>
-      <div class="osm-badge"><h3>Fewer failures.</h3><p>Faster resolution, with <a href="#pillars">triage intelligence</a> routing issues to the right people first time.</p></div>
-      <div class="osm-badge"><h3>Maximum performance.</h3><p>Planned. Managed. Future-ready — with clear <a href="#pillars">lifecycle roadmaps</a> for every system.</p></div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SIX PILLARS
-       ============================================================ -->
-  <section class="section" id="pillars">
-    <p class="cue reveal"><span class="cue__num">CUE 2.0</span><span class="cue__state">GO</span></p>
-    <h2 class="section__title reveal">Six pillars. <em>One service.</em></h2>
-    <p class="section__lead reveal">One cohesive service, six connected disciplines. Tap a segment to jump
-      to the detail — every part of the wheel feeds the others.</p>
 
     <!-- OSM wheel — each segment links to its pillar card below -->
     <div class="wheel reveal" role="navigation" aria-label="OSM service wheel">
@@ -170,7 +158,7 @@
             <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
           </radialGradient>
           <filter id="hubTextGlow" x="-60%" y="-60%" width="220%" height="220%">
-            <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#00ebb4" flood-opacity="0.55"/>
+            <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00ebb4" flood-opacity="0.6"/>
           </filter>
         </defs>
 
@@ -178,45 +166,51 @@
         <circle cx="240" cy="240" r="214" fill="none" stroke="url(#hubGrad)" stroke-opacity="0.16" stroke-width="1"/>
 
         <a href="#p1" class="seg" style="--accent:#008cf5" aria-label="Triage Intelligence">
-          <path d="M248.4 48.2 A192 192 0 0 1 401.9 136.8 L317.6 190.6 A92 92 0 0 0 244.0 148.1 Z"/>
-          <g transform="translate(311,117)">
-            <path class="seg__icon" d="M3 -10 L-5 2 H0 L-2 11 L7 -2 H2 Z" fill="currentColor" stroke="none"/>
-            <text y="28">TRIAGE</text>
+          <path d="M151.34 69.69 A192 192 0 0 1 328.66 69.69 L282.48 158.40 A92 92 0 0 0 197.52 158.40 Z"/>
+          <g transform="translate(240,98)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M3 -10 L-5 2 H0 L-2 11 L7 -2 H2 Z" fill="currentColor" stroke="none"/>
+            <text y="4">1. TRIAGE</text>
+            <text y="20">INTELLIGENCE</text>
           </g>
         </a>
         <a href="#p3" class="seg" style="--accent:#00ebb4" aria-label="System Health and Reporting">
-          <path d="M410.3 151.3 A192 192 0 0 1 410.3 328.7 L321.6 282.5 A92 92 0 0 0 321.6 197.5 Z"/>
-          <g transform="translate(382,240)">
-            <path class="seg__icon" d="M-11 0 h5 l3 -8 4 15 3 -7 h7" fill="none"/>
-            <text y="26">HEALTH</text>
+          <path d="M343.16 78.07 A192 192 0 0 1 431.82 231.63 L331.91 235.99 A92 92 0 0 0 289.43 162.41 Z"/>
+          <g transform="translate(362.98,169)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M-11 0 h5 l3 -8 4 15 3 -7 h7" fill="none"/>
+            <text y="4">3. SYSTEM HEALTH</text>
+            <text y="20">&amp; REPORTING</text>
           </g>
         </a>
-        <a href="#p5" class="seg" style="--accent:#008cf5" aria-label="Spares, Repairs and Maintenance">
-          <path d="M401.9 343.2 A192 192 0 0 1 248.4 431.8 L244.0 331.9 A92 92 0 0 0 317.6 289.4 Z"/>
-          <g transform="translate(311,363)">
-            <path class="seg__icon" d="M0 -11 L10 -5.5 V5.5 L0 11 L-10 5.5 V-5.5 Z M-10 -5.5 L0 0 L10 -5.5 M0 0 V11" fill="none"/>
-            <text y="30">SPARES</text>
+        <a href="#p5" class="seg" style="--accent:#008cf5" aria-label="Spares and Maintenance">
+          <path d="M431.82 248.37 A192 192 0 0 1 343.16 401.93 L289.43 317.59 A92 92 0 0 0 331.91 244.01 Z"/>
+          <g transform="translate(362.98,311)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M0 -11 L10 -5.5 V5.5 L0 11 L-10 5.5 V-5.5 Z M-10 -5.5 L0 0 L10 -5.5 M0 0 V11" fill="none"/>
+            <text y="4">5. SPARES &amp;</text>
+            <text y="20">MAINTENANCE</text>
           </g>
         </a>
         <a href="#p6" class="seg" style="--accent:#00beeb" aria-label="Training and Knowledge">
-          <path d="M231.6 431.8 A192 192 0 0 1 78.1 343.2 L162.4 289.4 A92 92 0 0 0 236.0 331.9 Z"/>
-          <g transform="translate(169,363)">
-            <path class="seg__icon" d="M-11 -4 L0 -9 L11 -4 L0 1 Z M-6 -1.5 V4 C-6 6 -3 7.5 0 7.5 S6 6 6 4 V-1.5" fill="none"/>
-            <text y="30">TRAINING</text>
+          <path d="M328.66 410.31 A192 192 0 0 1 151.34 410.31 L197.52 321.60 A92 92 0 0 0 282.48 321.60 Z"/>
+          <g transform="translate(240,382)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M-11 -4 L0 -9 L11 -4 L0 1 Z M-6 -1.5 V4 C-6 6 -3 7.5 0 7.5 S6 6 6 4 V-1.5" fill="none"/>
+            <text y="4">6. TRAINING &amp;</text>
+            <text y="20">KNOWLEDGE</text>
           </g>
         </a>
         <a href="#p4" class="seg" style="--accent:#FFA13B" aria-label="Lifecycle Management">
-          <path d="M69.7 328.7 A192 192 0 0 1 69.7 151.3 L158.4 197.5 A92 92 0 0 0 158.4 282.5 Z"/>
-          <g transform="translate(98,240)">
-            <path class="seg__icon" d="M9 -5 A10 10 0 1 0 9 5 M9 -9 V-5 H5" fill="none"/>
-            <text y="28">LIFECYCLE</text>
+          <path d="M136.84 401.93 A192 192 0 0 1 48.18 248.37 L148.09 244.01 A92 92 0 0 0 190.57 317.59 Z"/>
+          <g transform="translate(117.02,311)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M9 -5 A10 10 0 1 0 9 5 M9 -9 V-5 H5" fill="none"/>
+            <text y="4">4. LIFECYCLE</text>
+            <text y="20">MANAGEMENT</text>
           </g>
         </a>
         <a href="#p2" class="seg" style="--accent:#00beeb" aria-label="Engineer Access">
-          <path d="M78.1 136.8 A192 192 0 0 1 231.6 48.2 L236.0 148.1 A92 92 0 0 0 162.4 190.6 Z"/>
-          <g transform="translate(169,117)">
-            <path class="seg__icon" d="M9 -7 A6 6 0 0 1 1.5 0.5 L-6 8 A2.5 2.5 0 0 1 -9.5 4.5 L-2 -3 A6 6 0 0 1 5.5 -10.5 L2 -7 L5 -4 L8.5 -7.5 Z" fill="none"/>
-            <text y="28">ENGINEERS</text>
+          <path d="M48.18 231.63 A192 192 0 0 1 136.84 78.07 L190.57 162.41 A92 92 0 0 0 148.09 235.99 Z"/>
+          <g transform="translate(117.02,169)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M9 -7 A6 6 0 0 1 1.5 0.5 L-6 8 A2.5 2.5 0 0 1 -9.5 4.5 L-2 -3 A6 6 0 0 1 5.5 -10.5 L2 -7 L5 -4 L8.5 -7.5 Z" fill="none"/>
+            <text y="4">2. ENGINEER</text>
+            <text y="20">ACCESS</text>
           </g>
         </a>
 
@@ -227,10 +221,30 @@
         <circle cx="240" cy="240" r="80" fill="none" stroke="url(#hubGrad)" stroke-width="2" class="wheel__hubring"/>
         <circle cx="240" cy="240" r="74" fill="url(#hubFill)" stroke="url(#hubGrad)" stroke-width="2.5"/>
         <ellipse cx="240" cy="205" rx="48" ry="22" fill="#ffffff" opacity="0.05" pointer-events="none"/>
-        <text x="240" y="233" class="wheel__hub" filter="url(#hubTextGlow)">OSM</text>
-        <text x="240" y="259" class="wheel__hubsub">END TO END</text>
+        <text x="240" y="240" class="wheel__hub" filter="url(#hubTextGlow)">OSM</text>
       </svg>
     </div>
+
+    <p class="section__lead section__lead--center reveal">OSM is our comprehensive service that manages your
+      automation systems across their entire lifecycle — proactive, end-to-end, on your terms. Structured
+      support that means <strong>fewer failures, faster resolution</strong> and a team that can focus on
+      the show. Tap a segment to explore each pillar.</p>
+
+    <div class="osm-badges reveal">
+      <div class="osm-badge"><h3>Structured. Proactive.</h3><p>On your terms — from one-off <a href="#plans">inspections</a> to a fully managed PPM programme.</p></div>
+      <div class="osm-badge"><h3>Fewer failures.</h3><p>Faster resolution, with <a href="#pillars">triage intelligence</a> routing issues to the right people first time.</p></div>
+      <div class="osm-badge"><h3>Maximum performance.</h3><p>Planned. Managed. Future-ready — with clear <a href="#pillars">lifecycle roadmaps</a> for every system.</p></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SIX PILLARS
+       ============================================================ -->
+  <section class="section" id="pillars">
+    <p class="cue reveal"><span class="cue__num">CUE 2.0</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Six pillars. <em>One service.</em></h2>
+    <p class="section__lead reveal">One cohesive service, six connected disciplines — every part of the
+      wheel feeds the others.</p>
 
     <div class="pillars">
       <article class="pillar reveal" id="p1" style="--accent:#008cf5">
@@ -294,40 +308,103 @@
        ============================================================ -->
   <section class="section" id="plans">
     <p class="cue reveal"><span class="cue__num">CUE 3.0</span><span class="cue__state">GO</span></p>
-    <h2 class="section__title reveal">Choose your <em>level of cover</em></h2>
-    <p class="section__lead reveal">Service your equipment the way that suits your budget and your venue.
-      Every plan keeps you compliant for routine inspection requirements — and you can step up at any time.
-      Not sure which fits? <a href="#contact">Talk to us</a>.</p>
+    <h2 class="section__title reveal">Choose your <em>level of assurance</em></h2>
+    <p class="section__lead reveal">OSM is a tiered assurance programme for live performance automation
+      systems. Each tier blends intelligent triage, specialist engineering access and lifecycle planning —
+      scaling from small venues to mission-critical cruise fleets. Not sure which fits?
+      <a href="#contact">Talk to us</a>.</p>
+
+    <div class="tiers reveal">
+      <article class="tier">
+        <h3>OSM Ready</h3>
+        <p class="tier__tag">Performance Ready</p>
+        <p class="tier__desc">The foundation package — access to specialist automation expertise, annual
+          system health reviews and structured triage support.</p>
+        <p class="tier__apps"><strong>Typical applications:</strong> small theatres, museums, visitor
+          attractions, educational venues, small automation systems.</p>
+      </article>
+      <article class="tier tier--featured">
+        <h3>OSM Managed</h3>
+        <p class="tier__tag">Performance Managed</p>
+        <p class="tier__desc">A proactive service providing operational oversight, maintenance planning
+          and priority access to engineering expertise.</p>
+        <p class="tier__apps"><strong>Typical applications:</strong> large theatres, cruise ships, arenas,
+          corporate venues, regional attractions.</p>
+      </article>
+      <article class="tier">
+        <h3>OSM Critical</h3>
+        <p class="tier__tag">Performance Assured</p>
+        <p class="tier__desc">A comprehensive operational assurance programme for systems where downtime
+          has significant operational impact.</p>
+        <p class="tier__apps"><strong>Typical applications:</strong> cruise fleets, major attractions,
+          broadcast facilities, high-profile theatres, mission-critical automation systems.</p>
+      </article>
+    </div>
 
     <div class="plans-wrap reveal">
-      <table class="plans" aria-label="Service plan comparison">
+      <table class="plans" aria-label="OSM tier comparison">
         <thead>
           <tr>
             <th scope="col">What's included</th>
-            <th scope="col">Assessment</th>
-            <th scope="col">Inspection</th>
-            <th scope="col">Inspection +<br>Maintenance</th>
-            <th scope="col" class="plans__featured">PPM<br>Programme</th>
+            <th scope="col">OSM<br>Ready</th>
+            <th scope="col" class="plans__featured">OSM<br>Managed</th>
+            <th scope="col">OSM<br>Critical</th>
           </tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Operational test of all axes</th><td>✔</td><td>✔</td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Condition report</th><td>✔</td><td>✔</td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Basic maintenance plan</th><td>✔</td><td>✔</td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">LOLER inspection</th><td></td><td>✔</td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Load test if required</th><td></td><td>✔</td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Pre-determined maintenance</th><td></td><td></td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Planned repairs</th><td></td><td></td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Online documentation &amp; asset management</th><td></td><td></td><td>✔</td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Comprehensive PPM plan</th><td></td><td></td><td></td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Manager dashboard</th><td></td><td></td><td></td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Managed programme of planned maintenance</th><td></td><td></td><td></td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">End-user training</th><td></td><td></td><td></td><td class="plans__featured">✔</td></tr>
-          <tr><th scope="row">Consumables</th><td></td><td></td><td></td><td class="plans__featured">✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Support &amp; Triage</th></tr>
+          <tr><th scope="row">Triage App access</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Knowledge base access</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Guided fault diagnosis</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Incident tracking</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Fault trend analysis</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Critical incident escalation</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Engineering Access</th></tr>
+          <tr><th scope="row">Remote engineer access</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Included engineer hours</th><td>4 hours</td><td class="plans__featured">12 hours</td><td>24 hours</td></tr>
+          <tr><th scope="row">Priority site attendance</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Inspection &amp; Reporting</th></tr>
+          <tr><th scope="row">Annual system inspection</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Quarterly health reviews</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Health reporting</th><td>Basic</td><td class="plans__featured">Enhanced</td><td>Executive</td></tr>
+          <tr><th scope="row">Risk register</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Lifecycle &amp; Obsolescence</th></tr>
+          <tr><th scope="row">Obsolescence review</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Upgrade recommendations</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Lifecycle roadmap</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Multi-year planning</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Budget forecasting</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Spares &amp; Maintenance</th></tr>
+          <tr><th scope="row">Critical spares review</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Maintenance planning</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Vendor coordination</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr><th scope="row">Stock management guidance</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Training &amp; Knowledge</th></tr>
+          <tr><th scope="row">Learning portal — fundamentals</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Learning portal — operations</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Annual refresher training</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Operator guidance &amp; mentoring</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Knowledge transfer workshops</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr><th scope="row">New staff onboarding support</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="plans__cta reveal"><a class="btn btn--amber" href="mailto:info@1rps.com?subject=Service%20plan%20enquiry">Ask about a plan</a></p>
+
+    <!-- Escalation model -->
+    <div class="escalation reveal" aria-label="OSM escalation model">
+      <p class="escalation__intro">Every issue follows a structured path — engineering resource is deployed
+        only when triage and remote support cannot resolve the fault.</p>
+      <ol class="escalation__flow">
+        <li>Issue occurs</li>
+        <li>RPS triage — app, portal or phone</li>
+        <li>Guided diagnosis</li>
+        <li>Remote engineer escalation</li>
+        <li>Priority site attendance</li>
+        <li class="escalation__resolved">Resolved</li>
+      </ol>
+    </div>
+
+    <p class="plans__cta reveal"><a class="btn btn--amber" href="mailto:info@1rps.com?subject=OSM%20tier%20enquiry">Talk to us about pricing</a></p>
   </section>
 
   <!-- ============================================================

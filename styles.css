@@ -64,15 +64,16 @@ a:hover{ color:var(--amber); }
   transition:top .08s linear;
 }
 
-/* ---------- Hero video ---------- */
-.hero__video{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; z-index:-3;
+/* ---------- Video band (hero film reduced to a quiet strip) ---------- */
+.video-band{
+  position:relative; height:clamp(170px, 26vw, 300px); overflow:hidden;
 }
-.hero__scrim{
-  position:absolute; inset:0; z-index:-2;
-  background:
-    linear-gradient(180deg, rgba(7,13,23,.78) 0%, rgba(7,13,23,.62) 45%, var(--ink) 96%);
+.video-band__video{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
+.video-band__scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, var(--ink) 0%, rgba(7,13,23,.45) 30%, rgba(7,13,23,.45) 70%, var(--ink) 100%);
 }
 
 /* ---------- Hardware divider band ---------- */
@@ -164,9 +165,9 @@ a:hover{ color:var(--amber); }
 
 /* ---------- Hero ---------- */
 .hero{
-  min-height:100svh;
+  min-height:auto;
   display:flex; flex-direction:column; justify-content:center;
-  padding:7rem clamp(1.4rem,6vw,4rem) 0;
+  padding:10rem clamp(1.4rem,6vw,4rem) 0;
   max-width:var(--max); margin:0 auto; position:relative;
 }
 .hero__glow{
@@ -203,7 +204,7 @@ a:hover{ color:var(--amber); }
 
 /* Telemetry ticker */
 .telemetry{
-  margin-top:auto; padding:1rem 0 1.4rem; overflow:hidden;
+  margin-top:3.2rem; padding:1rem 0 1.4rem; overflow:hidden;
   mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
 .telemetry__inner{
@@ -245,33 +246,35 @@ a:hover{ color:var(--amber); }
 /* ---------- OSM wheel ---------- */
 .wheel{ display:flex; justify-content:center; margin-top:3rem; }
 .wheel__svg{ width:min(560px, 94vw); height:auto; overflow:visible; }
+.seg{
+  cursor:pointer; outline:none; color:var(--accent);
+  transform-origin:240px 240px; transform-box:view-box;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.seg:hover, .seg:focus-visible{ transform:scale(1.045); }
 .seg path:first-child{
   fill:var(--accent); fill-opacity:.24;
   stroke:var(--accent); stroke-opacity:.75; stroke-width:1.6;
-  transition:fill-opacity .3s ease, transform .3s cubic-bezier(.2,.7,.2,1), filter .3s ease;
-  transform-origin:240px 240px; transform-box:view-box;
+  transition:fill-opacity .3s ease, filter .3s ease;
   filter:drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 50%, transparent));
 }
 .seg:hover path:first-child, .seg:focus-visible path:first-child{
-  fill-opacity:.52; transform:scale(1.04);
+  fill-opacity:.52;
   filter:drop-shadow(0 0 18px var(--accent));
 }
-.seg{ cursor:pointer; outline:none; color:var(--accent); }
 .seg g{ pointer-events:none; }
 .seg .seg__icon{ stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .seg text{
-  fill:var(--paper); font-family:var(--mono); font-size:12px; font-weight:500;
-  letter-spacing:.16em; text-anchor:middle;
+  fill:currentColor; font-family:var(--mono); font-size:10px; font-weight:500;
+  letter-spacing:.1em; text-anchor:middle;
 }
 .wheel__hubring{ filter:drop-shadow(0 0 12px rgba(0,235,180,.45)); }
 .wheel__hub{
   fill:var(--paper); font-family:var(--display); font-weight:700;
-  font-size:38px; letter-spacing:.06em; text-anchor:middle;
+  font-size:46px; letter-spacing:.08em; text-anchor:middle;
+  dominant-baseline:central;
 }
-.wheel__hubsub{
-  fill:var(--muted); font-family:var(--mono); font-size:9.5px;
-  letter-spacing:.3em; text-anchor:middle;
-}
+.section__lead--center{ margin:2.4rem auto 0; text-align:center; }
 
 /* ---------- Pillar icon badges ---------- */
 .pillar__badge{
@@ -350,6 +353,44 @@ a:hover{ color:var(--amber); }
 .article__body strong{ color:var(--paper); font-weight:600; }
 .article__cta{ margin-top:1.8rem; display:flex; gap:1rem; flex-wrap:wrap; }
 
+/* ---------- OSM tier cards ---------- */
+.tiers{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-top:2.6rem; }
+.tier{
+  background:linear-gradient(160deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line); border-radius:var(--rad); padding:1.6rem;
+}
+.tier--featured{
+  border-color:rgba(255,161,59,.5);
+  box-shadow:0 0 34px rgba(255,161,59,.08);
+}
+.tier h3{ font-family:var(--display); font-size:1.25rem; }
+.tier__tag{
+  font-family:var(--mono); font-size:.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--teal); margin:.25rem 0 .85rem;
+}
+.tier--featured .tier__tag{ color:var(--amber); }
+.tier__desc{ color:var(--muted); font-size:.95rem; margin-bottom:.9rem; }
+.tier__apps{ color:var(--muted); font-size:.85rem; }
+.tier__apps strong{ color:var(--paper); font-weight:600; }
+
+/* ---------- Escalation model ---------- */
+.escalation{ margin-top:2.6rem; }
+.escalation__intro{ color:var(--muted); font-size:.95rem; max-width:680px; }
+.escalation__flow{
+  list-style:none; display:flex; flex-wrap:wrap; align-items:center;
+  gap:.8rem 1.7rem; margin-top:1.2rem; padding:0;
+}
+.escalation__flow li{
+  font-family:var(--mono); font-size:.76rem; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--panel); border:1px solid var(--line); border-radius:999px;
+  padding:.5rem .95rem; color:var(--muted); position:relative;
+}
+.escalation__flow li:not(:last-child)::after{
+  content:"→"; position:absolute; right:-1.25rem; top:50%; translate:0 -50%;
+  color:var(--teal); font-size:.85rem;
+}
+.escalation__resolved{ border-color:rgba(0,235,180,.5) !important; color:var(--teal) !important; }
+
 /* ---------- Plans table ---------- */
 .plans-wrap{ overflow-x:auto; margin-top:2.4rem; border-radius:var(--rad); border:1px solid var(--line); }
 .plans{ width:100%; border-collapse:collapse; min-width:760px; background:var(--panel); }
@@ -362,6 +403,11 @@ a:hover{ color:var(--amber); }
   font-size:.85rem; background:var(--panel-2); padding-block:1.1rem;
 }
 .plans tbody th{ text-align:left; font-weight:600; color:var(--muted); }
+.plans tr.plans__cat th{
+  font-family:var(--mono); font-weight:500; font-size:.72rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--teal);
+  background:var(--panel-2); padding-block:.7rem;
+}
 .plans td{ color:var(--teal); font-weight:700; }
 .plans tbody tr:hover{ background:rgba(0,140,245,.06); }
 .plans__featured{ background:rgba(255,161,59,.08); color:var(--amber) !important; }
@@ -453,6 +499,7 @@ thead .plans__featured{ color:var(--amber); }
 /* ---------- Responsive ---------- */
 @media (max-width: 920px){
   .pillars, .osm-badges, .news{ grid-template-columns:1fr 1fr; }
+  .tiers{ grid-template-columns:1fr; }
   .outcomes{ grid-template-columns:repeat(2,1fr); }
   .outcome{ border-bottom:1px solid var(--line); }
   .split{ grid-template-columns:1fr; }
