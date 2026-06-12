@@ -245,7 +245,7 @@ a:hover{ color:var(--amber); }
 
 /* ---------- OSM wheel ---------- */
 .wheel{ display:flex; justify-content:center; margin-top:3rem; }
-.wheel__svg{ width:min(560px, 94vw); height:auto; overflow:visible; }
+.wheel__svg{ width:min(680px, 94vw); height:auto; overflow:visible; }
 .seg{
   cursor:pointer; outline:none; color:var(--accent);
   transform-origin:240px 240px; transform-box:view-box;
@@ -253,20 +253,21 @@ a:hover{ color:var(--amber); }
 }
 .seg:hover, .seg:focus-visible{ transform:scale(1.045); }
 .seg path:first-child{
-  fill:var(--accent); fill-opacity:.24;
-  stroke:var(--accent); stroke-opacity:.75; stroke-width:1.6;
+  fill:var(--accent); fill-opacity:.1;
+  stroke:var(--accent); stroke-opacity:.95; stroke-width:1.8;
   transition:fill-opacity .3s ease, filter .3s ease;
-  filter:drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 50%, transparent));
+  filter:drop-shadow(0 0 7px color-mix(in srgb, var(--accent) 55%, transparent));
 }
 .seg:hover path:first-child, .seg:focus-visible path:first-child{
-  fill-opacity:.52;
-  filter:drop-shadow(0 0 18px var(--accent));
+  fill-opacity:.28;
+  filter:drop-shadow(0 0 20px var(--accent));
 }
 .seg g{ pointer-events:none; }
 .seg .seg__icon{ stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .seg text{
   fill:currentColor; font-family:var(--mono); font-size:10px; font-weight:500;
   letter-spacing:.08em; text-anchor:middle;
+  filter:drop-shadow(0 0 6px color-mix(in srgb, currentColor 55%, transparent));
 }
 .wheel__hubring{ filter:drop-shadow(0 0 12px rgba(0,235,180,.45)); }
 .wheel__hub{
