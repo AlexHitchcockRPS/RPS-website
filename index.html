@@ -80,6 +80,7 @@
       <a href="#pillars">Services</a>
       <a href="#plans">Plans</a>
       <a href="#training">Training</a>
+      <a href="#news">News</a>
       <a href="#about">About</a>
     </nav>
     <div class="nav__actions">
@@ -159,7 +160,22 @@
           <linearGradient id="hubGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#00ebb4"/><stop offset="1" stop-color="#008cf5"/>
           </linearGradient>
+          <radialGradient id="hubFill" cx="0.5" cy="0.34" r="0.85">
+            <stop offset="0" stop-color="#18293F"/>
+            <stop offset="0.55" stop-color="#0D1726"/>
+            <stop offset="1" stop-color="#060B14"/>
+          </radialGradient>
+          <radialGradient id="wheelSheen" cx="0.5" cy="0.28" r="0.72">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+            <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="hubTextGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#00ebb4" flood-opacity="0.55"/>
+          </filter>
         </defs>
+
+        <!-- outer framing ring -->
+        <circle cx="240" cy="240" r="214" fill="none" stroke="url(#hubGrad)" stroke-opacity="0.16" stroke-width="1"/>
 
         <a href="#p1" class="seg" style="--accent:#008cf5" aria-label="Triage Intelligence">
           <path d="M248.4 48.2 A192 192 0 0 1 401.9 136.8 L317.6 190.6 A92 92 0 0 0 244.0 148.1 Z"/>
@@ -204,9 +220,15 @@
           </g>
         </a>
 
-        <circle cx="240" cy="240" r="74" fill="#0D1726" stroke="url(#hubGrad)" stroke-width="2.5"/>
-        <text x="240" y="232" class="wheel__hub">OSM</text>
-        <text x="240" y="258" class="wheel__hubsub">END TO END</text>
+        <!-- light-from-above sheen across the whole wheel -->
+        <circle cx="240" cy="240" r="192" fill="url(#wheelSheen)" pointer-events="none"/>
+
+        <!-- glossy hub -->
+        <circle cx="240" cy="240" r="80" fill="none" stroke="url(#hubGrad)" stroke-width="2" class="wheel__hubring"/>
+        <circle cx="240" cy="240" r="74" fill="url(#hubFill)" stroke="url(#hubGrad)" stroke-width="2.5"/>
+        <ellipse cx="240" cy="205" rx="48" ry="22" fill="#ffffff" opacity="0.05" pointer-events="none"/>
+        <text x="240" y="233" class="wheel__hub" filter="url(#hubTextGlow)">OSM</text>
+        <text x="240" y="259" class="wheel__hubsub">END TO END</text>
       </svg>
     </div>
 
@@ -367,6 +389,47 @@
   </section>
 
   <!-- ============================================================
+       NEWS
+       To add a post: copy a news/<slug>.html page, edit it, drop the
+       square image in assets/img/news/, then copy a .news-card block below.
+       ============================================================ -->
+  <section class="section" id="news">
+    <p class="cue reveal"><span class="cue__num">CUE 5.5</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Latest <em>news</em></h2>
+    <p class="section__lead reveal">What we've been working on — shows, training, repairs and refurbishments.</p>
+
+    <div class="news reveal">
+      <a class="news-card" href="news/repairs-and-refurbs.html">
+        <span class="news-card__media"><img src="assets/img/news/repairs-and-refurbs.png" alt="RPS repairs and refurbishments — legacy drives" loading="lazy" width="600" height="600"></span>
+        <span class="news-card__body">
+          <span class="news-card__date">28 May 2026</span>
+          <h3 class="news-card__title">Repairs and Refurbs</h3>
+          <span class="news-card__excerpt">Not every automation problem needs a full replacement — we repair and refurbish legacy drives across the whole lifecycle.</span>
+          <span class="news-card__more">Read more →</span>
+        </span>
+      </a>
+      <a class="news-card" href="news/abtt-show-e52.html">
+        <span class="news-card__media"><img src="assets/img/news/abtt-show-e52.png" alt="RPS at the ABTT Theatre Show, Stand E52" loading="lazy" width="600" height="600"></span>
+        <span class="news-card__body">
+          <span class="news-card__date">28 May 2026</span>
+          <h3 class="news-card__title">RPS @ ABTT Show, Stand E52</h3>
+          <span class="news-card__excerpt">Come and find us at the ABTT Theatre Show — Stand E52, 3–4 June 2026, Alexandra Palace, London.</span>
+          <span class="news-card__more">Read more →</span>
+        </span>
+      </a>
+      <a class="news-card" href="news/booking-may-2026.html">
+        <span class="news-card__media"><img src="assets/img/news/booking-may-2026.png" alt="RPS automation maintenance training — booking from 2026" loading="lazy" width="600" height="600"></span>
+        <span class="news-card__body">
+          <span class="news-card__date">31 Dec 2025</span>
+          <h3 class="news-card__title">Booking from May 2026!!</h3>
+          <span class="news-card__excerpt">New hands-on automation maintenance &amp; equipment-care training, built with mechanical specialist Mark Hatt.</span>
+          <span class="news-card__more">Read more →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
        CONTACT
        ============================================================ -->
   <section class="contact" id="contact">
@@ -398,6 +461,7 @@
       <a href="#pillars">Services</a>
       <a href="#plans">Plans</a>
       <a href="#training">Training</a>
+      <a href="#news">News</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
