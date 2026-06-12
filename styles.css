@@ -266,7 +266,7 @@ a:hover{ color:var(--amber); }
 .seg .seg__icon{ stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .seg text{
   fill:currentColor; font-family:var(--mono); font-size:10px; font-weight:500;
-  letter-spacing:.1em; text-anchor:middle;
+  letter-spacing:.08em; text-anchor:middle;
 }
 .wheel__hubring{ filter:drop-shadow(0 0 12px rgba(0,235,180,.45)); }
 .wheel__hub{
