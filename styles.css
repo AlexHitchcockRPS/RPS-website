@@ -15,12 +15,12 @@
   --amber:      #FFA13B;   /* OSM call-to-action accent    */
   --paper:      #EDF3FA;   /* primary text                 */
 
-  /* OSM pillars — from rps-design/rps-tokens.css v1.0.
+  /* OSM pillars — from rps-design/rps-tokens.css v1.2.
      Identify a service, never a status. */
   --rps-pillar-health:    #00EBB4;  /* 1 System Health & Reporting     */
   --rps-pillar-spares:    #D46BD9;  /* 2 Spares, Repairs & Maintenance */
   --rps-pillar-training:  #9DB4D0;  /* 3 Training & Knowledge          */
-  --rps-pillar-lifecycle: #8B7CF6;  /* 4 Lifecycle Management          */
+  --rps-pillar-lifecycle: #FFA13B;  /* 4 Lifecycle Management          */
   --rps-pillar-triage:    #00BEEB;  /* 5 Triage Intelligence           */
   --rps-pillar-engineer:  #008CF5;  /* 6 Engineer Access               */
   --muted:      #93A4BC;   /* secondary text               */
