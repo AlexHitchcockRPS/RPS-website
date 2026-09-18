@@ -1,20 +1,8 @@
 /* ============================================================
    RPS — Resolution Production Services
    Brand per RPS Brand Guideline Sheet:
-   colours #008cf5 / #00beeb / #00ebb4, type Stolzl (Roboto fallback)
+   colours #008cf5 / #00beeb / #00ebb4, type Roboto (Stolzl retired 18 Sep 2026)
    ============================================================ */
-@font-face{
-  font-family:"Stolzl"; font-weight:400; font-style:normal; font-display:swap;
-  src:url("assets/fonts/Stolzl-Book.woff2") format("woff2");
-}
-@font-face{
-  font-family:"Stolzl"; font-weight:500; font-style:normal; font-display:swap;
-  src:url("assets/fonts/Stolzl-Medium.woff2") format("woff2");
-}
-@font-face{
-  font-family:"Stolzl"; font-weight:700; font-style:normal; font-display:swap;
-  src:url("assets/fonts/Stolzl-Bold.woff2") format("woff2");
-}
 
 :root{
   --ink:        #070D17;   /* stage-dark background        */
@@ -28,8 +16,8 @@
   --paper:      #EDF3FA;   /* primary text                 */
   --muted:      #93A4BC;   /* secondary text               */
 
-  --display: "Stolzl", "Roboto", sans-serif;
-  --body:    "Stolzl", "Roboto", sans-serif;
+  --display: "Roboto", system-ui, sans-serif;
+  --body:    "Roboto", system-ui, sans-serif;
   --mono:    "IBM Plex Mono", monospace;
 
   --max: 1120px;

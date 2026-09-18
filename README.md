@@ -16,7 +16,7 @@ Pure HTML/CSS/JS. No WordPress, no build step, no dependencies, no hosting cost.
 
 1. **Phone number** — search `index.html` for `+440000000000` (appears 3 times) and replace with the real RPS number in international format, e.g. `tel:+441234567890`.
 
-Brand assets are already in place: Stolzl webfonts (self-hosted in `assets/fonts/` — confirm your font licence covers web embedding before the public repo goes live), official palette (#008cf5 / #00beeb / #00ebb4), transparent logo mark and full logo, the promo video compressed from 17 MB to ~1.6 MB as the hero background (portrait version served on phones, static poster for reduced-motion users), and the hardware photo as a section divider.
+Brand assets are already in place: Roboto and IBM Plex Mono from Google Fonts, official palette (#008cf5 / #00beeb / #00ebb4), transparent logo mark and full logo, the promo video compressed from 17 MB to ~1.6 MB as the hero background (portrait version served on phones, static poster for reduced-motion users), and the hardware photo as a section divider.
 
 ## Hosting on GitHub Pages (free)
 
