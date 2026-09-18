@@ -1,0 +1,91 @@
+/* ============================================================
+   rps-tokens.css  —  RPS shared design tokens
+   Version 1.0  •  18 September 2026  •  source of truth: rps-design
+   Copy this file into each app. Do not hot-link it.
+   Status: v1.0, approved 18 September 2026.
+   ============================================================ */
+:root{
+  /* ---- Shell ---- */
+  --rps-shell:          #070D17;   /* page background, dark stage      */
+  --rps-panel:          #0D1726;   /* cards, tables                    */
+  --rps-panel-raised:   #111E31;   /* hover, nested panels             */
+  --rps-line:           rgba(150,180,220,.14);
+  --rps-line-strong:    rgba(150,180,220,.28);
+
+  /* ---- Text ---- */
+  --rps-text:           #EDF3FA;   /* 17.4:1 on shell                  */
+  --rps-text-muted:     #93A4BC;   /*  7.7:1 on shell, 6.6:1 raised    */
+
+  /* ---- Interaction (portal and Hub) ---- */
+  --rps-action:         #008CF5;   /* links, focus, active nav. 5.6:1 on shell   */
+  --rps-action-fill:    #0072CE;   /* filled buttons. White text 4.9:1. Agreed    */
+  --rps-action-on:      #FFFFFF;   /* text on --rps-action-fill                  */
+  /* White on #008CF5 is 3.5:1 and fails AA for button text, hence the fill. */
+
+  /* ---- Brand: identity and gradient only, never status ---- */
+  --rps-brand-blue:     #008CF5;
+  --rps-brand-cyan:     #00BEEB;
+  --rps-brand-mint:     #00EBB4;
+  --rps-brand-gradient: linear-gradient(92deg, #00EBB4 10%, #008CF5 80%);
+
+  /* ---- Public website only. In portal and Hub, amber means caution. ---- */
+  --rps-cta-public:     #FFA13B;
+
+  /* ---- OSM pillars: identify a service, never a status ----
+     Named by service, not number, so reordering the ring never touches
+     the palette. Ring order, clockwise from the top (agreed 18 Sep 2026):
+     1 Health, 2 Spares, 3 Training, 4 Lifecycle, 5 Triage, 6 Engineer.
+     Arranged so no two neighbours merge for red–green colour-blind
+     viewers. Supersedes Build Plan 5.3. Approved 18 Sep 2026. */
+  --rps-pillar-health:     #00EBB4;  /* 1 System Health & Reporting  mint    */
+  --rps-pillar-spares:     #D46BD9;  /* 2 Spares, Repairs & Maint.   magenta */
+  --rps-pillar-training:   #9DB4D0;  /* 3 Training & Knowledge       steel   */
+  --rps-pillar-lifecycle:  #8B7CF6;  /* 4 Lifecycle Management       violet  */
+  --rps-pillar-triage:     #00BEEB;  /* 5 Triage Intelligence        cyan    */
+  --rps-pillar-engineer:   #008CF5;  /* 6 Engineer Access            blue    */
+
+  /* ---- Status: always with an icon and words ---- */
+  --rps-status-fail:       #F2545B;  /* failed, overdue.                 5.7:1 */
+  --rps-status-caution:    #F0A63A;  /* not presented, due soon, gaps.   9.5:1 */
+  --rps-status-pass:       var(--rps-text);  /* passed: text plus tick, not green */
+  --rps-status-unexamined: #6B7780;  /* hatched fill only, never text colour  */
+  --rps-hatch: repeating-linear-gradient(135deg,
+                 var(--rps-status-unexamined) 0 3px, transparent 3px 7px);
+
+  /* ---- Type ----
+     Roboto for all text, agreed 18 Sep 2026; Stolzl retired.
+     IBM Plex Mono for figures, codes and small labels. */
+  --rps-font-sans:  "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --rps-font-mono:  "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  --rps-size-xs:   .75rem;
+  --rps-size-sm:   .875rem;
+  --rps-size-base: 1rem;
+  --rps-size-md:   1.125rem;
+  --rps-size-lg:   1.5rem;
+  --rps-size-xl:   2rem;
+  --rps-size-2xl:  2.75rem;
+
+  /* ---- Space and shape ---- */
+  --rps-space-1: .25rem;  --rps-space-2: .5rem;  --rps-space-3: .75rem;
+  --rps-space-4: 1rem;    --rps-space-5: 1.5rem; --rps-space-6: 2rem;
+  --rps-space-7: 3rem;    --rps-space-8: 4.5rem;
+  --rps-radius-sm: 6px;   /* inputs, chips              */
+  --rps-radius:    12px;  /* cards in portal and Hub    */
+  --rps-radius-lg: 18px;  /* website cards              */
+  --rps-radius-pill: 999px;
+}
+
+/* ---- Print: always light ----
+   Every surface token flips to paper. Status uses the palette already
+   proven in the inspection app's printed output. */
+@media print{
+  :root{
+    --rps-shell:#FFFFFF; --rps-panel:#FFFFFF; --rps-panel-raised:#F4F6F8;
+    --rps-line:#C9D1DA;  --rps-line-strong:#8C98A6;
+    --rps-text:#111820;  --rps-text-muted:#4A5563;
+    --rps-action:#0058A3; --rps-action-fill:#FFFFFF; --rps-action-on:#0058A3;
+    --rps-status-fail:#A4001B; --rps-status-caution:#8A5A00;
+    --rps-status-pass:#16663C; --rps-status-unexamined:#8C98A6;
+  }
+}
