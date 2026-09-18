@@ -1,265 +1,554 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>rps-design · token sample v1.0</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="rps-tokens.css">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--rps-shell);color:var(--rps-text);font-family:var(--rps-font-sans);line-height:1.6;font-size:var(--rps-size-base)}
-a{color:var(--rps-action)}
-:focus-visible{outline:2px solid var(--rps-action);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1180px;margin:0 auto;padding:var(--rps-space-7) var(--rps-space-5) var(--rps-space-8)}
-header.top{display:flex;align-items:center;gap:var(--rps-space-4);padding-bottom:var(--rps-space-5);border-bottom:1px solid var(--rps-line)}
-header.top img{width:40px;height:40px}
-header.top h1{font-size:var(--rps-size-lg);font-weight:700}
-header.top .ver{margin-left:auto;font-family:var(--rps-font-mono);font-size:var(--rps-size-xs);color:var(--rps-text-muted)}
-h2{font-size:var(--rps-size-xl);font-weight:700;margin:var(--rps-space-8) 0 var(--rps-space-3);letter-spacing:-.01em}
-h3{font-size:var(--rps-size-md);font-weight:500;margin-bottom:var(--rps-space-2)}
-.lead{color:var(--rps-text-muted);max-width:70ch}
-.lead + .lead{margin-top:var(--rps-space-3)}
-code{font-family:var(--rps-font-mono);font-size:.85em;color:var(--rps-text-muted)}
-.mono{font-family:var(--rps-font-mono)}
+<html lang="en-GB"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* ---- ring (website CSS, lightly adapted) ---- */
-.rings{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--rps-space-5);margin-top:var(--rps-space-6)}
-.rings figure{background:var(--rps-panel);border:1px solid var(--rps-line);border-radius:var(--rps-radius);padding:var(--rps-space-4)}
-.rings figcaption{margin-top:var(--rps-space-3)}
-.rings figcaption p{color:var(--rps-text-muted);font-size:var(--rps-size-sm)}
-.rings figure.pick{border-color:var(--rps-line-strong)}
-.ring{width:100%;height:auto;display:block;overflow:visible}
-.seg{color:var(--accent)}
-.seg > path{fill:var(--accent);fill-opacity:.1;stroke:var(--accent);stroke-opacity:.95;stroke-width:1.8;
-  filter:drop-shadow(0 0 7px color-mix(in srgb,var(--accent) 55%,transparent))}
-.seg .ic{stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.seg text{fill:currentColor;font-family:var(--rps-font-mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-anchor:middle}
-.seg .pill{fill:none;stroke:currentColor;stroke-width:1.2}
-.seg text.kw{font-size:8.5px;letter-spacing:.14em;fill:var(--rps-text)}
-.seg text.state{font-size:8px;letter-spacing:.1em}
-.seg--off{color:var(--rps-text-muted)}
-.seg--off > path{fill:var(--rps-panel-raised);fill-opacity:.6;stroke:var(--rps-line-strong);stroke-opacity:1;filter:none}
-.seg--off g > path.ic:not(.lock){opacity:.55}
-.seg--off .lock{stroke-width:1.4}
-.hub{fill:var(--rps-text);font-family:var(--rps-font-sans);font-weight:700;font-size:44px;letter-spacing:.08em;text-anchor:middle;dominant-baseline:central}
+  <!-- ============================================================
+       SEO — edit titles & descriptions here
+       ============================================================ -->
+  <title>RPS — Theatre Automation Service, Inspection &amp; Training | Resolution Production Services</title>
+  <meta name="description" content="RPS keeps theatre automation show-ready. Operational Systems Management (OSM), LOLER inspection, planned maintenance, spares and ABTT-accredited training for cruise ship theatres and live venues across the UK and Europe.">
+  <link rel="canonical" href="https://www.1rps.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#070D17">
 
-.cvd{display:flex;gap:var(--rps-space-2);flex-wrap:wrap;margin-top:var(--rps-space-5);align-items:center}
-.cvd span{color:var(--rps-text-muted);font-size:var(--rps-size-sm);margin-right:var(--rps-space-2)}
-.cvd button{font:inherit;font-size:var(--rps-size-sm);background:var(--rps-panel);color:var(--rps-text);border:1px solid var(--rps-line-strong);border-radius:var(--rps-radius-pill);padding:.35rem .9rem;cursor:pointer}
-.cvd button[aria-pressed="true"]{border-color:var(--rps-action);color:var(--rps-action)}
-body.sim-deut .rings{filter:url(#f-deut)}
-body.sim-prot .rings{filter:url(#f-prot)}
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.1rps.com/">
+  <meta property="og:site_name" content="Resolution Production Services">
+  <meta property="og:title" content="RPS — Theatre Automation Service, Inspection &amp; Training">
+  <meta property="og:description" content="Operational Systems Management for cruise ship theatres and live venues. Triage intelligence, engineer access, inspection, lifecycle planning, spares and training.">
+  <meta property="og:image" content="https://www.1rps.com/assets/og-image.png">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
 
-table.map{width:100%;border-collapse:collapse;margin-top:var(--rps-space-5);font-size:var(--rps-size-sm);background:var(--rps-panel);border:1px solid var(--rps-line);border-radius:var(--rps-radius);overflow:hidden}
-table.map th,table.map td{padding:.6rem .9rem;border-bottom:1px solid var(--rps-line);text-align:left;vertical-align:middle}
-table.map thead th{background:var(--rps-panel-raised);font-weight:500;color:var(--rps-text-muted)}
-table.map tr:last-child td{border-bottom:none}
-.dot{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;vertical-align:-1px;margin-right:.45rem;border:1px solid rgba(255,255,255,.15)}
+  <!-- Structured data: Organization + Services -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Resolution Production Services",
+    "alternateName": "RPS",
+    "url": "https://www.1rps.com/",
+    "logo": "https://www.1rps.com/assets/rps-logo.png",
+    "email": "info@1rps.com",
+    "description": "Technical service, maintenance, inspection and training for theatre automation systems in cruise ship theatres and live entertainment venues across the UK and Europe.",
+    "areaServed": ["GB", "EU"],
+    "sameAs": [
+      "https://www.linkedin.com/company/resolution-production-services/",
+      "https://www.facebook.com/profile.php?id=61579517594267",
+      "https://www.instagram.com/1rps.2025/"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Operational Systems Management",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "System Health & Reporting", "description": "Inspection, monitoring, auditing and LOLER-compliant reporting for stage machinery." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Spares, Repairs & Maintenance", "description": "Planned maintenance, repairs, spares and consumables management." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Training & Knowledge", "description": "ABTT-accredited theatre automation training and operator documentation." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lifecycle Management", "description": "Upgrade paths, legacy refurbishment and obsolescence planning for automation systems." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Triage Intelligence", "description": "AI-assisted fault triage that captures, categorises and prioritises automation issues fast." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engineer Access", "description": "Remote and on-site support from experienced theatre automation engineers." } }
+      ]
+    }
+  }
+  </script>
 
-/* ---- portal demo ---- */
-.portal-demo{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--rps-space-6);align-items:center;margin-top:var(--rps-space-5);
-  background:var(--rps-panel);border:1px solid var(--rps-line);border-radius:var(--rps-radius);padding:var(--rps-space-6)}
-.portal-demo .ring{max-width:440px;margin:0 auto}
-.rules{list-style:none;display:grid;gap:var(--rps-space-2);margin-top:var(--rps-space-5)}
-.rules li{color:var(--rps-text-muted);font-size:var(--rps-size-sm);padding-left:1.1rem;position:relative}
-.rules li::before{content:"";position:absolute;left:0;top:.6em;width:.4rem;height:.4rem;border-radius:50%;background:var(--rps-text-muted)}
-.portal-demo ul{list-style:none;display:grid;gap:var(--rps-space-3)}
-.portal-demo li{color:var(--rps-text-muted);font-size:var(--rps-size-sm);padding-left:1.1rem;position:relative}
-.portal-demo li::before{content:"";position:absolute;left:0;top:.6em;width:.4rem;height:.4rem;border-radius:50%;background:var(--rps-text-muted)}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
 
-/* ---- swatches ---- */
-.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--rps-space-3);margin-top:var(--rps-space-5)}
-.sw{display:flex;gap:var(--rps-space-3);background:var(--rps-panel);border:1px solid var(--rps-line);border-radius:var(--rps-radius);padding:var(--rps-space-3)}
-.sw__chip{flex:0 0 44px;height:44px;border-radius:var(--rps-radius-sm);border:1px solid var(--rps-line-strong)}
-.sw b{display:block;font-weight:500;font-size:var(--rps-size-sm)}
-.sw code{display:block;font-size:var(--rps-size-xs)}
-.sw .hex{font-family:var(--rps-font-mono);font-size:var(--rps-size-xs);color:var(--rps-text-muted)}
-.sw p{font-size:var(--rps-size-xs);color:var(--rps-text-muted);margin-top:.2rem}
-
-/* ---- status ---- */
-.status-row{display:flex;flex-wrap:wrap;gap:var(--rps-space-3);margin-top:var(--rps-space-5)}
-.st{display:inline-flex;align-items:center;gap:.45rem;font-size:var(--rps-size-sm);font-weight:500;padding:.35rem .8rem .35rem .6rem;border-radius:var(--rps-radius-sm);background:var(--rps-panel);border:1px solid var(--rps-line)}
-.st svg{width:16px;height:16px;flex:none}
-.st--fail{color:var(--rps-status-fail);border-color:color-mix(in srgb,var(--rps-status-fail) 45%,transparent)}
-.st--caution{color:var(--rps-status-caution);border-color:color-mix(in srgb,var(--rps-status-caution) 45%,transparent)}
-.st--pass{color:var(--rps-status-pass)}
-.st--unexamined{color:var(--rps-text-muted)}
-.st--unexamined i{width:14px;height:14px;border-radius:3px;background:var(--rps-hatch);border:1px solid var(--rps-status-unexamined)}
-.bar{display:flex;height:18px;border-radius:var(--rps-radius-sm);overflow:hidden;margin-top:var(--rps-space-5);border:1px solid var(--rps-line-strong)}
-.bar span{display:block}
-.bar .b-pass{background:var(--rps-text);opacity:.85}
-.bar .b-caution{background:var(--rps-status-caution)}
-.bar .b-fail{background:var(--rps-status-fail)}
-.bar .b-un{background:var(--rps-hatch)}
-.bar-key{display:flex;flex-wrap:wrap;gap:var(--rps-space-5);margin-top:var(--rps-space-2);font-size:var(--rps-size-xs);color:var(--rps-text-muted)}
-
-/* ---- components ---- */
-.comps{display:grid;grid-template-columns:1fr 1fr;gap:var(--rps-space-5);margin-top:var(--rps-space-5)}
-.card{background:var(--rps-panel);border:1px solid var(--rps-line);border-radius:var(--rps-radius);padding:var(--rps-space-5)}
-.btns{display:flex;flex-wrap:wrap;gap:var(--rps-space-3);margin-top:var(--rps-space-3)}
-.btn{font:inherit;font-size:var(--rps-size-sm);font-weight:500;border-radius:var(--rps-radius-sm);padding:.6rem 1.2rem;cursor:pointer;border:1px solid transparent;text-decoration:none;display:inline-block}
-.btn--primary{background:var(--rps-action-fill);color:var(--rps-action-on)}
-.btn--secondary{background:transparent;color:var(--rps-action);border-color:var(--rps-action)}
-.btn--public{background:var(--rps-cta-public);color:var(--rps-shell);border-radius:var(--rps-radius-pill)}
-.note{font-size:var(--rps-size-xs);color:var(--rps-text-muted);margin-top:var(--rps-space-2)}
-.empty{border:1px dashed var(--rps-line-strong);border-radius:var(--rps-radius);padding:var(--rps-space-4);margin-top:var(--rps-space-3)}
-.empty strong{display:block;font-weight:500}
-.empty p{font-size:var(--rps-size-sm);color:var(--rps-text-muted)}
-table.reg{width:100%;border-collapse:collapse;font-size:var(--rps-size-sm);margin-top:var(--rps-space-3)}
-table.reg th,table.reg td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--rps-line)}
-table.reg th{color:var(--rps-text-muted);font-weight:500}
-table.reg td.num{font-family:var(--rps-font-mono)}
-.type-spec{display:grid;gap:var(--rps-space-4);margin-top:var(--rps-space-5)}
-.type-spec div{display:grid;grid-template-columns:180px 1fr;gap:var(--rps-space-4);align-items:baseline;border-bottom:1px solid var(--rps-line);padding-bottom:var(--rps-space-3)}
-.type-spec code{font-size:var(--rps-size-xs)}
-footer{margin-top:var(--rps-space-8);padding-top:var(--rps-space-5);border-top:1px solid var(--rps-line);color:var(--rps-text-muted);font-size:var(--rps-size-sm)}
-
-@media (max-width:900px){.rings,.portal-demo,.comps{grid-template-columns:1fr}}
-
-/* ---- print: light, and the rings keep their outlines ---- */
-@media print{
-  body{font-size:10.5pt}
-  .cvd{display:none}
-  .wrap{padding:0}
-  .seg > path{filter:none;fill-opacity:.06}
-  .seg--off > path{fill:#F4F6F8}
-  .seg:not(.seg--off) text{fill:#111820}
-  .hub{fill:#111820}
-  .hubdisc{fill:#FFFFFF}
-  .rings{grid-template-columns:repeat(2,1fr)!important}
-  .portal-demo{grid-template-columns:1fr 1fr!important}
-  .comps{grid-template-columns:1fr 1fr!important}
-  .rings,.portal-demo,.card{break-inside:avoid}
-  h2{break-after:avoid}
-  .bar .b-pass{background:var(--rps-status-pass)}
-}
-</style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <!-- Machado et al. 2009, severity 1.0, linear RGB -->
-  <filter id="f-deut" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0"/></filter>
-  <filter id="f-prot" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0"/></filter>
-</svg>
 
-<div class="wrap">
-<header class="top">
-  <img src="assets/rps-mark.png" alt="">
-  <h1>RPS design tokens</h1>
-  <span class="ver">rps-tokens.css v1.0 · 18 Sep 2026</span>
-</header>
+  <!-- Axis position track (scroll progress, left edge) -->
+  <div class="axis-track" aria-hidden="true"><div class="axis-carriage" id="axisCarriage"></div></div>
 
-<h2>The OSM ring</h2>
-<p class="lead">Pillars run 1 to 6 clockwise from the top, ordered by what a customer is most likely to take first. The geometry and icons are the demo website's, unchanged; only the order and colours move.</p>
-<p class="lead">Colours follow the service, not the number, so the tokens are named by service and a future reorder is a markup change, not a palette change. The six colours are the same as before, rearranged so no two neighbours merge for red–green colour-blind viewers. No six-colour set survives colour blindness intact, which is why every pillar also carries its number, name and icon. Use the buttons to check.</p>
-<div class="cvd" role="group" aria-label="Colour vision simulation">
-  <span>View as</span>
-  <button type="button" data-sim="" aria-pressed="true">Typical vision</button>
-  <button type="button" data-sim="sim-deut" aria-pressed="false">Deuteranopia</button>
-  <button type="button" data-sim="sim-prot" aria-pressed="false">Protanopia</button>
-</div>
-<div class="rings rings--two">
-  <figure><svg viewBox="0 0 480 480" class="ring" role="img" aria-label="OSM ring, pillars 1 to 6 clockwise from the top"><defs><linearGradient id="hgpub" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00ebb4"/><stop offset="1" stop-color="#008cf5"/></linearGradient><radialGradient id="hfpub" cx=".5" cy=".34" r=".85"><stop offset="0" stop-color="#18293F"/><stop offset=".55" stop-color="#0D1726"/><stop offset="1" stop-color="#060B14"/></radialGradient></defs><circle cx="240" cy="240" r="214" fill="none" stroke="url(#hgpub)" stroke-opacity=".16"/><g class="seg" style="--accent:var(--rps-pillar-health)" aria-label="1. System Health and Reporting"><path d="M148.36 71.28 A192 192 0 0 1 331.64 71.28 L281.60 157.94 A92 92 0 0 0 198.40 157.94 Z"/><g transform="translate(240,92)"><path class="ic" transform="translate(0,-26)" d="M-11 0 h5 l3 -8 4 15 3 -7 h7" fill="none"/><text y="4">1. SYSTEM HEALTH</text><text y="20">&amp; REPORTING</text><text y="38" class="kw">INSPECTIONS</text></g></g><g class="seg" style="--accent:var(--rps-pillar-spares)" aria-label="2. Spares, Repairs and Maintenance"><path d="M340.30 76.28 A192 192 0 0 1 431.93 235.00 L331.86 235.00 A92 92 0 0 0 290.26 162.94 Z"/><g transform="translate(360,160)"><path class="ic" transform="translate(0,-26)" d="M0 -11 L10 -5.5 V5.5 L0 11 L-10 5.5 V-5.5 Z M-10 -5.5 L0 0 L10 -5.5 M0 0 V11" fill="none"/><text y="4">2. SPARES,</text><text y="18">REPAIRS &amp;</text><text y="32">MAINTENANCE</text></g></g><g class="seg" style="--accent:var(--rps-pillar-training)" aria-label="3. Training and Knowledge"><path d="M431.93 245.00 A192 192 0 0 1 340.30 403.72 L290.26 317.06 A92 92 0 0 0 331.86 245.00 Z"/><g transform="translate(358,311)"><path class="ic" transform="translate(0,-26)" d="M-11 -4 L0 -9 L11 -4 L0 1 Z M-6 -1.5 V4 C-6 6 -3 7.5 0 7.5 S6 6 6 4 V-1.5" fill="none"/><text y="4">3. TRAINING &amp;</text><text y="20">KNOWLEDGE</text></g></g><g class="seg" style="--accent:var(--rps-pillar-lifecycle)" aria-label="4. Lifecycle Management"><path d="M331.64 408.72 A192 192 0 0 1 148.36 408.72 L198.40 322.06 A92 92 0 0 0 281.60 322.06 Z"/><g transform="translate(240,382)"><path class="ic" transform="translate(0,-26)" d="M9 -5 A10 10 0 1 0 9 5 M9 -9 V-5 H5" fill="none"/><text y="4">4. LIFECYCLE</text><text y="20">MANAGEMENT</text></g></g><g class="seg" style="--accent:var(--rps-pillar-triage)" aria-label="5. Triage Intelligence"><path d="M139.70 403.72 A192 192 0 0 1 48.07 245.00 L148.14 245.00 A92 92 0 0 0 189.74 317.06 Z"/><g transform="translate(122,311)"><path class="ic" transform="translate(0,-26)" d="M3 -10 L-5 2 H0 L-2 11 L7 -2 H2 Z" fill="currentColor" stroke="none"/><text y="4">5. TRIAGE</text><text y="20">INTELLIGENCE</text></g></g><g class="seg" style="--accent:var(--rps-pillar-engineer)" aria-label="6. Engineer Access"><path d="M48.07 235.00 A192 192 0 0 1 139.70 76.28 L189.74 162.94 A92 92 0 0 0 148.14 235.00 Z"/><g transform="translate(122,169)"><path class="ic" transform="translate(0,-26)" d="M9 -7 A6 6 0 0 1 1.5 0.5 L-6 8 A2.5 2.5 0 0 1 -9.5 4.5 L-2 -3 A6 6 0 0 1 5.5 -10.5 L2 -7 L5 -4 L8.5 -7.5 Z" fill="none"/><text y="4">6. ENGINEER</text><text y="20">ACCESS</text></g></g><circle cx="240" cy="240" r="80" fill="none" stroke="url(#hgpub)" stroke-width="2"/><circle class="hubdisc" cx="240" cy="240" r="74" fill="url(#hfpub)" stroke="url(#hgpub)" stroke-width="2.5"/><text x="240" y="240" class="hub">OSM</text></svg><figcaption><h3>Website</h3><p>All six live. System Health &amp; Reporting carries “Inspections” so the thing most people come for is named on the ring.</p></figcaption></figure>
-  <figure><svg viewBox="0 0 480 480" class="ring" role="img" aria-label="OSM ring, pillars 1 to 6 clockwise from the top"><defs><linearGradient id="hgpor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00ebb4"/><stop offset="1" stop-color="#008cf5"/></linearGradient><radialGradient id="hfpor" cx=".5" cy=".34" r=".85"><stop offset="0" stop-color="#18293F"/><stop offset=".55" stop-color="#0D1726"/><stop offset="1" stop-color="#060B14"/></radialGradient></defs><circle cx="240" cy="240" r="214" fill="none" stroke="url(#hgpor)" stroke-opacity=".16"/><g class="seg" style="--accent:var(--rps-pillar-health)" aria-label="1. System Health and Reporting"><path d="M148.36 71.28 A192 192 0 0 1 331.64 71.28 L281.60 157.94 A92 92 0 0 0 198.40 157.94 Z"/><g transform="translate(240,92)"><path class="ic" transform="translate(0,-26)" d="M-11 0 h5 l3 -8 4 15 3 -7 h7" fill="none"/><text y="4">1. SYSTEM HEALTH</text><text y="20">&amp; REPORTING</text><g transform="translate(0,40)"><rect x="-24" y="-9" width="48" height="17" rx="8.5" class="pill"/><text y="3.5" class="state">ACTIVE</text></g></g></g><g class="seg seg--off" style="--accent:var(--rps-pillar-spares)" aria-label="2. Spares, Repairs and Maintenance, not included"><path d="M340.30 76.28 A192 192 0 0 1 431.93 235.00 L331.86 235.00 A92 92 0 0 0 290.26 162.94 Z"/><g transform="translate(360,156)"><path class="ic" transform="translate(0,-26)" d="M0 -11 L10 -5.5 V5.5 L0 11 L-10 5.5 V-5.5 Z M-10 -5.5 L0 0 L10 -5.5 M0 0 V11" fill="none"/><text y="4">2. SPARES,</text><text y="18">REPAIRS &amp;</text><text y="32">MAINTENANCE</text><g transform="translate(-42,48)"><path class="ic lock" d="M-4 0 h8 v6 h-8 Z M-2.5 0 v-2.5 a2.5 2.5 0 0 1 5 0 V0" fill="none"/></g><text y="54" x="6" class="state">NOT INCLUDED</text></g></g><g class="seg seg--off" style="--accent:var(--rps-pillar-training)" aria-label="3. Training and Knowledge, not included"><path d="M431.93 245.00 A192 192 0 0 1 340.30 403.72 L290.26 317.06 A92 92 0 0 0 331.86 245.00 Z"/><g transform="translate(358,305)"><path class="ic" transform="translate(0,-26)" d="M-11 -4 L0 -9 L11 -4 L0 1 Z M-6 -1.5 V4 C-6 6 -3 7.5 0 7.5 S6 6 6 4 V-1.5" fill="none"/><text y="4">3. TRAINING &amp;</text><text y="20">KNOWLEDGE</text><g transform="translate(-42,36)"><path class="ic lock" d="M-4 0 h8 v6 h-8 Z M-2.5 0 v-2.5 a2.5 2.5 0 0 1 5 0 V0" fill="none"/></g><text y="42" x="6" class="state">NOT INCLUDED</text></g></g><g class="seg seg--off" style="--accent:var(--rps-pillar-lifecycle)" aria-label="4. Lifecycle Management, not included"><path d="M331.64 408.72 A192 192 0 0 1 148.36 408.72 L198.40 322.06 A92 92 0 0 0 281.60 322.06 Z"/><g transform="translate(240,376)"><path class="ic" transform="translate(0,-26)" d="M9 -5 A10 10 0 1 0 9 5 M9 -9 V-5 H5" fill="none"/><text y="4">4. LIFECYCLE</text><text y="20">MANAGEMENT</text><g transform="translate(-42,36)"><path class="ic lock" d="M-4 0 h8 v6 h-8 Z M-2.5 0 v-2.5 a2.5 2.5 0 0 1 5 0 V0" fill="none"/></g><text y="42" x="6" class="state">NOT INCLUDED</text></g></g><g class="seg seg--off" style="--accent:var(--rps-pillar-triage)" aria-label="5. Triage Intelligence, not included"><path d="M139.70 403.72 A192 192 0 0 1 48.07 245.00 L148.14 245.00 A92 92 0 0 0 189.74 317.06 Z"/><g transform="translate(122,305)"><path class="ic" transform="translate(0,-26)" d="M3 -10 L-5 2 H0 L-2 11 L7 -2 H2 Z" fill="currentColor" stroke="none"/><text y="4">5. TRIAGE</text><text y="20">INTELLIGENCE</text><g transform="translate(-42,36)"><path class="ic lock" d="M-4 0 h8 v6 h-8 Z M-2.5 0 v-2.5 a2.5 2.5 0 0 1 5 0 V0" fill="none"/></g><text y="42" x="6" class="state">NOT INCLUDED</text></g></g><g class="seg seg--off" style="--accent:var(--rps-pillar-engineer)" aria-label="6. Engineer Access, not included"><path d="M48.07 235.00 A192 192 0 0 1 139.70 76.28 L189.74 162.94 A92 92 0 0 0 148.14 235.00 Z"/><g transform="translate(122,163)"><path class="ic" transform="translate(0,-26)" d="M9 -7 A6 6 0 0 1 1.5 0.5 L-6 8 A2.5 2.5 0 0 1 -9.5 4.5 L-2 -3 A6 6 0 0 1 5.5 -10.5 L2 -7 L5 -4 L8.5 -7.5 Z" fill="none"/><text y="4">6. ENGINEER</text><text y="20">ACCESS</text><g transform="translate(-42,36)"><path class="ic lock" d="M-4 0 h8 v6 h-8 Z M-2.5 0 v-2.5 a2.5 2.5 0 0 1 5 0 V0" fill="none"/></g><text y="42" x="6" class="state">NOT INCLUDED</text></g></g><circle cx="240" cy="240" r="80" fill="none" stroke="url(#hgpor)" stroke-width="2"/><circle class="hubdisc" cx="240" cy="240" r="74" fill="url(#hfpor)" stroke="url(#hgpor)" stroke-width="2.5"/><text x="240" y="240" class="hub">OSM</text></svg><figcaption><h3>Portal, Phase 4</h3><p>Pillar 1 active, the only one the portal delivers today. The rest subdued with a lock and “Not included”. No service count until entitlement data exists.</p></figcaption></figure>
-</div>
-<table class="map">
-  <thead><tr><th>No.</th><th>Pillar</th><th>Colour</th><th>Token</th></tr></thead>
-  <tbody><tr><td>1</td><td>System Health &amp; Reporting</td><td><span class="dot" style="background:var(--rps-pillar-health)"></span>Mint #00EBB4</td><td><code>--rps-pillar-health</code></td></tr><tr><td>2</td><td>Spares, Repairs &amp; Maintenance</td><td><span class="dot" style="background:var(--rps-pillar-spares)"></span>Magenta #D46BD9</td><td><code>--rps-pillar-spares</code></td></tr><tr><td>3</td><td>Training &amp; Knowledge</td><td><span class="dot" style="background:var(--rps-pillar-training)"></span>Steel #9DB4D0</td><td><code>--rps-pillar-training</code></td></tr><tr><td>4</td><td>Lifecycle Management</td><td><span class="dot" style="background:var(--rps-pillar-lifecycle)"></span>Violet #8B7CF6</td><td><code>--rps-pillar-lifecycle</code></td></tr><tr><td>5</td><td>Triage Intelligence</td><td><span class="dot" style="background:var(--rps-pillar-triage)"></span>Cyan #00BEEB</td><td><code>--rps-pillar-triage</code></td></tr><tr><td>6</td><td>Engineer Access</td><td><span class="dot" style="background:var(--rps-pillar-engineer)"></span>Blue #008CF5</td><td><code>--rps-pillar-engineer</code></td></tr></tbody>
-</table>
-<ul class="rules">
-  <li>Active pillars keep their colour and carry the word “Active”. Colour is never the only cue.</li>
-  <li>Subdued pillars open a “Talk to RPS” page, never data.</li>
-  <li>Pillar colour marks the service, not its health. A pillar with overdue items does not turn red; the item inside it does.</li>
-  <li>The mock-up's bright green “Active” pill is not used, so green never appears to mean “compliant”.</li>
-</ul>
-
-<h2>Shell, text and interaction</h2>
-<p class="lead">Contrast ratios are against the shell background unless noted. AA needs 4.5:1 for body text and 3:1 for large text and graphics.</p>
-<div class="swatches">
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-shell)"></span><div><b>Shell</b><code>--rps-shell</code><span class="hex">#070D17</span><p>Page background.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-panel)"></span><div><b>Panel</b><code>--rps-panel</code><span class="hex">#0D1726</span><p>Cards and tables.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-panel-raised)"></span><div><b>Panel, raised</b><code>--rps-panel-raised</code><span class="hex">#111E31</span><p>Hover and nested panels.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-text)"></span><div><b>Text</b><code>--rps-text</code><span class="hex">#EDF3FA · 17.4:1</span><p>Body text.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-text-muted)"></span><div><b>Text, muted</b><code>--rps-text-muted</code><span class="hex">#93A4BC · 7.7:1</span><p>Labels. 6.6:1 on raised panels, so safe at small sizes.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-action)"></span><div><b>Action</b><code>--rps-action</code><span class="hex">#008CF5 · 5.6:1</span><p>Links, focus, active navigation.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-action-fill)"></span><div><b>Action fill</b><code>--rps-action-fill</code><span class="hex">#0072CE · white 4.9:1</span><p>White on #008CF5 is only 3.5:1, so filled buttons sit one step darker. Agreed.</p></div></div>
-  <div class="sw"><span class="sw__chip" style="background:var(--rps-cta-public)"></span><div><b>Public call to action</b><code>--rps-cta-public</code><span class="hex">#FFA13B</span><p>Website only. Too close to caution amber to share a screen with it.</p></div></div>
-</div>
-
-<h2>Status</h2>
-<p class="lead">Every status carries an icon and a word. Passed is quiet: text colour and a tick. Colour is spent on what needs attention.</p>
-<div class="status-row">
-  <span class="st st--fail"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5"/></svg>Failed</span>
-  <span class="st st--fail"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Overdue</span>
-  <span class="st st--caution"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.5v3.2M8 11.8v.1"/></svg>Due soon</span>
-  <span class="st st--caution"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.5v3.2M8 11.8v.1"/></svg>Not presented</span>
-  <span class="st st--caution"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.5v3.2M8 11.8v.1"/></svg>Record gaps</span>
-  <span class="st st--pass"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Passed</span>
-  <span class="st st--unexamined"><i></i>Not yet examined</span>
-</div>
-<div class="bar" role="img" aria-label="Example estate: 64 passed, 9 caution, 4 failed, 23 not yet examined">
-  <span class="b-pass" style="width:64%"></span><span class="b-caution" style="width:9%"></span><span class="b-fail" style="width:4%"></span><span class="b-un" style="width:23%"></span>
-</div>
-<div class="bar-key"><span>Passed 64</span><span>Caution 9</span><span>Failed 4</span><span>Not yet examined 23</span><span>Illustrative figures</span></div>
-
-<h2>Components</h2>
-<div class="comps">
-  <div class="card">
-    <h3>Buttons</h3>
-    <div class="btns">
-      <button class="btn btn--primary" type="button">View latest report</button>
-      <button class="btn btn--secondary" type="button">Talk to RPS</button>
-      <a class="btn btn--public" href="#">Let’s talk OSM</a>
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#home" aria-label="RPS home">
+      <img src="assets/img/rps-mark.png" alt="" class="nav__mark" width="34" height="34">
+      <span>RPS</span>
+    </a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="#osm">OSM</a>
+      <a href="#pillars">Services</a>
+      <a href="#plans">Plans</a>
+      <a href="#training">Training</a>
+      <a href="#news">News</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--ghost" href="tel:+440000000000">Call us</a>
+      <a class="btn btn--amber" href="mailto:info@1rps.com?subject=Let%27s%20talk%20OSM">Email us</a>
     </div>
-    <p class="note">The pill-shaped amber button is the website's. It does not appear in the portal or Hub.</p>
+    <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
 
-    <h3 style="margin-top:var(--rps-space-5)">A Hub panel with no source yet</h3>
-    <div class="empty">
-      <strong>Urgent · not connected yet</strong>
-      <p>This panel has no live feed. Open <a href="#">Inspections</a> to see overdue and failed equipment, or <a href="#">Triage</a> for open cases.</p>
+  <main>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <p class="cue cue--hero"><span class="cue__num">CUE 0.5</span><span class="cue__state">STANDBY</span></p>
+    <h1 class="hero__title">
+      <span class="hero__line">Live Entertainment automation,</span>
+      <span class="hero__line hero__line--grad">kept show-ready.</span>
+    </h1>
+    <p class="hero__sub">RPS provides expert technical Service, Inspection and Training for automation
+      systems in <a href="#about">cruise ship theatres and live venues</a> across the UK and Europe —
+      so the only surprises in your show are the ones you scripted.</p>
+    <div class="hero__cta">
+      <a class="btn btn--amber btn--lg" href="#contact">Let's talk OSM</a>
+      <a class="btn btn--outline btn--lg" href="#pillars">Explore our services</a>
     </div>
-    <p class="note">An empty panel must never read as “nothing is urgent”.</p>
+
+    <!-- Telemetry ticker -->
+    <div class="telemetry" aria-hidden="true">
+      <div class="telemetry__inner" id="ticker">
+        <span>AXIS 01 · FLY BAR 12 · POSITION 8.450 m · OK</span>
+        <span>AXIS 04 · STAGE LIFT C · LOAD 612 kg · OK</span>
+        <span>AXIS 09 · PERFORMER FLY · CUE 47 COMPLETE</span>
+        <span>LOLER INSPECTION · PASSED</span>
+        <span>AXIS 14 · REVOLVE · 2.0 rpm · OK</span>
+        <span>PPM SCHEDULE · ON TRACK</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       VIDEO BAND — hero film reduced to a quiet strip
+       ============================================================ -->
+  <div class="video-band" aria-hidden="true">
+    <video class="video-band__video" id="heroVideo" autoplay="" muted="" loop="" playsinline="" poster="assets/video/rps-hero-poster.jpg"></video>
+    <div class="video-band__scrim"></div>
   </div>
-  <div class="card">
-    <h3>Register rows</h3>
-    <table class="reg">
-      <thead><tr><th>Equipment</th><th>SWL</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td>Flying bar 12</td><td class="num">500 kg</td><td><span class="st st--pass"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>Passed</span></td></tr>
-        <tr><td>Stage lift C chain</td><td class="num">2,000 kg</td><td><span class="st st--fail"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="6.5"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5"/></svg>Failed</span></td></tr>
-        <tr><td>Performer flying winch</td><td class="num">250 kg</td><td><span class="st st--caution"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.5v3.2M8 11.8v.1"/></svg>Not presented</span></td></tr>
-        <tr><td>Revolve drive</td><td class="num">—</td><td><span class="st st--unexamined"><i></i>Not yet examined</span></td></tr>
-      </tbody>
-    </table>
-    <p class="note">Illustrative rows. Figures in IBM Plex Mono.</p>
+
+  <!-- ============================================================
+       OSM INTRO
+       ============================================================ -->
+  <section class="section" id="osm">
+    <p class="cue reveal"><span class="cue__num">CUE 1.0</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Operational Systems <em>Management</em></h2>
+
+    <!-- OSM wheel — each segment links to its pillar card below -->
+    <div class="wheel reveal" role="navigation" aria-label="OSM service wheel">
+      <svg viewBox="0 0 480 480" class="wheel__svg">
+        <defs>
+          <linearGradient id="hubGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#00ebb4"></stop><stop offset="1" stop-color="#008cf5"></stop>
+          </linearGradient>
+          <radialGradient id="hubFill" cx="0.5" cy="0.34" r="0.85">
+            <stop offset="0" stop-color="#18293F"></stop>
+            <stop offset="0.55" stop-color="#0D1726"></stop>
+            <stop offset="1" stop-color="#060B14"></stop>
+          </radialGradient>
+          <radialGradient id="wheelSheen" cx="0.5" cy="0.28" r="0.72">
+            <stop offset="0" stop-color="#ffffff" stop-opacity="0.05"></stop>
+            <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"></stop>
+          </radialGradient>
+          <filter id="hubTextGlow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00ebb4" flood-opacity="0.6"></feDropShadow>
+          </filter>
+        </defs>
+
+        <!-- outer framing ring -->
+        <circle cx="240" cy="240" r="214" fill="none" stroke="url(#hubGrad)" stroke-opacity="0.16" stroke-width="1"></circle>
+
+        <a href="#p1" class="seg" style="--accent:var(--rps-pillar-health)" aria-label="1. System Health and Reporting">
+          <path d="M148.36 71.28 A192 192 0 0 1 331.64 71.28 L281.60 157.94 A92 92 0 0 0 198.40 157.94 Z"></path>
+          <g transform="translate(240,92)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M-11 0 h5 l3 -8 4 15 3 -7 h7" fill="none"></path>
+            <text y="4">1. SYSTEM HEALTH</text>
+            <text y="20">&amp; REPORTING</text>
+            <text y="38" class="seg__kw">INSPECTIONS</text>
+          </g>
+        </a>
+        <a href="#p2" class="seg" style="--accent:var(--rps-pillar-spares)" aria-label="2. Spares, Repairs and Maintenance">
+          <path d="M340.30 76.28 A192 192 0 0 1 431.93 235.00 L331.86 235.00 A92 92 0 0 0 290.26 162.94 Z"></path>
+          <g transform="translate(360,160)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M0 -11 L10 -5.5 V5.5 L0 11 L-10 5.5 V-5.5 Z M-10 -5.5 L0 0 L10 -5.5 M0 0 V11" fill="none"></path>
+            <text y="4">2. SPARES,</text>
+            <text y="18">REPAIRS &amp;</text>
+            <text y="32">MAINTENANCE</text>
+          </g>
+        </a>
+        <a href="#p3" class="seg" style="--accent:var(--rps-pillar-training)" aria-label="3. Training and Knowledge">
+          <path d="M431.93 245.00 A192 192 0 0 1 340.30 403.72 L290.26 317.06 A92 92 0 0 0 331.86 245.00 Z"></path>
+          <g transform="translate(358,311)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M-11 -4 L0 -9 L11 -4 L0 1 Z M-6 -1.5 V4 C-6 6 -3 7.5 0 7.5 S6 6 6 4 V-1.5" fill="none"></path>
+            <text y="4">3. TRAINING &amp;</text>
+            <text y="20">KNOWLEDGE</text>
+          </g>
+        </a>
+        <a href="#p4" class="seg" style="--accent:var(--rps-pillar-lifecycle)" aria-label="4. Lifecycle Management">
+          <path d="M331.64 408.72 A192 192 0 0 1 148.36 408.72 L198.40 322.06 A92 92 0 0 0 281.60 322.06 Z"></path>
+          <g transform="translate(240,382)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M9 -5 A10 10 0 1 0 9 5 M9 -9 V-5 H5" fill="none"></path>
+            <text y="4">4. LIFECYCLE</text>
+            <text y="20">MANAGEMENT</text>
+          </g>
+        </a>
+        <a href="#p5" class="seg" style="--accent:var(--rps-pillar-triage)" aria-label="5. Triage Intelligence">
+          <path d="M139.70 403.72 A192 192 0 0 1 48.07 245.00 L148.14 245.00 A92 92 0 0 0 189.74 317.06 Z"></path>
+          <g transform="translate(122,311)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M3 -10 L-5 2 H0 L-2 11 L7 -2 H2 Z" fill="currentColor" stroke="none"></path>
+            <text y="4">5. TRIAGE</text>
+            <text y="20">INTELLIGENCE</text>
+          </g>
+        </a>
+        <a href="#p6" class="seg" style="--accent:var(--rps-pillar-engineer)" aria-label="6. Engineer Access">
+          <path d="M48.07 235.00 A192 192 0 0 1 139.70 76.28 L189.74 162.94 A92 92 0 0 0 148.14 235.00 Z"></path>
+          <g transform="translate(122,169)">
+            <path class="seg__icon" transform="translate(0,-26)" d="M9 -7 A6 6 0 0 1 1.5 0.5 L-6 8 A2.5 2.5 0 0 1 -9.5 4.5 L-2 -3 A6 6 0 0 1 5.5 -10.5 L2 -7 L5 -4 L8.5 -7.5 Z" fill="none"></path>
+            <text y="4">6. ENGINEER</text>
+            <text y="20">ACCESS</text>
+          </g>
+        </a>
+
+        <!-- light-from-above sheen across the whole wheel -->
+        <circle cx="240" cy="240" r="192" fill="url(#wheelSheen)" pointer-events="none"></circle>
+
+        <!-- glossy hub -->
+        <circle cx="240" cy="240" r="80" fill="none" stroke="url(#hubGrad)" stroke-width="2" class="wheel__hubring"></circle>
+        <circle cx="240" cy="240" r="74" fill="url(#hubFill)" stroke="url(#hubGrad)" stroke-width="2.5"></circle>
+        <ellipse cx="240" cy="205" rx="48" ry="22" fill="#ffffff" opacity="0.05" pointer-events="none"></ellipse>
+        <text x="240" y="240" class="wheel__hub" filter="url(#hubTextGlow)">OSM</text>
+      </svg>
+    </div>
+
+    <p class="section__lead section__lead--center reveal">OSM is our comprehensive service that manages your
+      automation systems across their entire lifecycle — proactive, end-to-end, on your terms. Structured
+      support that means <strong>fewer failures, faster resolution</strong> and a team that can focus on
+      the show. Tap a segment to explore each pillar.</p>
+
+    <div class="osm-badges reveal">
+      <div class="osm-badge"><h3>Structured. Proactive.</h3><p>On your terms — from one-off <a href="#plans">inspections</a> to a fully managed PPM programme.</p></div>
+      <div class="osm-badge"><h3>Fewer failures.</h3><p>Faster resolution, with <a href="#pillars">triage intelligence</a> routing issues to the right people first time.</p></div>
+      <div class="osm-badge"><h3>Maximum performance.</h3><p>Planned. Managed. Future-ready — with clear <a href="#pillars">lifecycle roadmaps</a> for every system.</p></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SIX PILLARS
+       ============================================================ -->
+  <section class="section" id="pillars">
+    <p class="cue reveal"><span class="cue__num">CUE 2.0</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Six pillars. <em>One service.</em></h2>
+    <p class="section__lead reveal">One cohesive service, six connected disciplines — every part of the
+      wheel feeds the others.</p>
+
+    <div class="pillars">
+      <article class="pillar reveal" id="p1" style="--accent:var(--rps-pillar-health)">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12 h5 l2.5 -7 3.5 14 2.5 -7 h6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <span class="pillar__num">01</span>
+        <h3>System Health &amp; Reporting</h3>
+        <p>Visibility you can act on. We inspect, monitor and audit system health, identify risks early and
+          provide clear reporting — including <a href="#plans">LOLER inspection</a> — so you stay in control.</p>
+      </article>
+      <article class="pillar reveal" id="p2" style="--accent:var(--rps-pillar-spares)">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5 L21 7.5 V16.5 L12 21.5 L3 16.5 V7.5 Z M3 7.5 L12 12.5 L21 7.5 M12 12.5 V21.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg></span>
+        <span class="pillar__num">02</span>
+        <h3>Spares, Repairs &amp; Maintenance</h3>
+        <p>Right parts. Right time. We help you plan and manage spares, consumables and
+          <a href="#plans">maintenance</a> so you're prepared — not caught out.</p>
+      </article>
+      <article class="pillar reveal" id="p3" style="--accent:var(--rps-pillar-training)">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1.5 8.5 L12 3.5 L22.5 8.5 L12 13.5 Z M6 11 V16 C6 18 8.7 19.5 12 19.5 S18 18 18 16 V11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg></span>
+        <span class="pillar__num">03</span>
+        <h3>Training &amp; Knowledge</h3>
+        <p>A learning platform and documentation so your team has the knowledge to operate and maintain
+          systems with confidence. See our <a href="#training">ABTT-accredited courses</a>.</p>
+      </article>
+      <article class="pillar reveal" id="p4" style="--accent:var(--rps-pillar-lifecycle)">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 8 A8.5 8.5 0 1 0 19 16 M19 3.5 V8 H14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+        <span class="pillar__num">04</span>
+        <h3>Lifecycle Management</h3>
+        <p>Plan ahead. Stay ahead. Upgrade paths, legacy refurbs and obsolescence planning keep your systems
+          reliable and future-ready.</p>
+      </article>
+      <article class="pillar reveal" id="p5" style="--accent:var(--rps-pillar-triage)">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3 L7 12 H11.5 L10 21 L17 9 H12.5 Z" fill="currentColor"></path></svg></span>
+        <span class="pillar__num">05</span>
+        <h3>Triage Intelligence</h3>
+        <p>Smart. Structured. Fast. Our Triage App captures, categorises and prioritises issues to get the
+          right information to the right people — fast.</p>
+      </article>
+      <article class="pillar reveal" id="p6" style="--accent:var(--rps-pillar-engineer)">
+        <span class="pillar__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 6 A5 5 0 0 1 12.5 12 L6 18.5 A2.2 2.2 0 0 1 2.9 15.4 L9.4 9 A5 5 0 0 1 15.5 2.4 L12.5 5.4 L15 7.9 L18 4.9 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg></span>
+        <span class="pillar__num">06</span>
+        <h3>Engineer Access</h3>
+        <p>Expertise at your fingertips. A whole-support partnership with experienced automation engineers,
+          remote and on-site — efficient and effective.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       OUTCOMES STRIP
+       ============================================================ -->
+  <section class="outcomes reveal" aria-label="What OSM delivers">
+    <div class="outcome"><h3>Reduce downtime</h3><p>Issues resolved faster and prevented sooner.</p></div>
+    <div class="outcome"><h3>Improve reliability</h3><p>Healthier systems. Better shows.</p></div>
+    <div class="outcome"><h3>Support your team</h3><p>We augment your team — not replace it.</p></div>
+    <div class="outcome"><h3>Control costs</h3><p>Planned investment. Fewer surprises.</p></div>
+    <div class="outcome"><h3>Plan the future</h3><p>Clear roadmaps and lifecycle strategy.</p></div>
+  </section>
+
+  <!-- ============================================================
+       SERVICE PLANS
+       ============================================================ -->
+  <section class="section" id="plans">
+    <p class="cue reveal"><span class="cue__num">CUE 3.0</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Choose your <em>level of assurance</em></h2>
+    <p class="section__lead reveal">OSM is a tiered assurance programme for live performance automation
+      systems. Each tier blends intelligent triage, specialist engineering access and lifecycle planning —
+      scaling from small venues to mission-critical cruise fleets. Not sure which fits?
+      <a href="#contact">Talk to us</a>.</p>
+
+    <div class="tiers reveal">
+      <article class="tier">
+        <h3>OSM Ready</h3>
+        <p class="tier__tag">Performance Ready</p>
+        <p class="tier__desc">The foundation package — access to specialist automation expertise, annual
+          system health reviews and structured triage support.</p>
+        <p class="tier__apps"><strong>Typical applications:</strong> small theatres, museums, visitor
+          attractions, educational venues, small automation systems.</p>
+      </article>
+      <article class="tier tier--featured">
+        <h3>OSM Managed</h3>
+        <p class="tier__tag">Performance Managed</p>
+        <p class="tier__desc">A proactive service providing operational oversight, maintenance planning
+          and priority access to engineering expertise.</p>
+        <p class="tier__apps"><strong>Typical applications:</strong> large theatres, cruise ships, arenas,
+          corporate venues, regional attractions.</p>
+      </article>
+      <article class="tier">
+        <h3>OSM Critical</h3>
+        <p class="tier__tag">Performance Assured</p>
+        <p class="tier__desc">A comprehensive operational assurance programme for systems where downtime
+          has significant operational impact.</p>
+        <p class="tier__apps"><strong>Typical applications:</strong> cruise fleets, major attractions,
+          broadcast facilities, high-profile theatres, mission-critical automation systems.</p>
+      </article>
+    </div>
+
+    <div class="plans-wrap reveal">
+      <table class="plans" aria-label="OSM tier comparison">
+        <thead>
+          <tr>
+            <th scope="col">What's included</th>
+            <th scope="col">OSM<br>Ready</th>
+            <th scope="col" class="plans__featured">OSM<br>Managed</th>
+            <th scope="col">OSM<br>Critical</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Inspection &amp; Reporting</th></tr>
+          <tr><th scope="row">Annual system inspection</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Quarterly health reviews</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Health reporting</th><td>Basic</td><td class="plans__featured">Enhanced</td><td>Executive</td></tr>
+          <tr><th scope="row">Risk register</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Spares, Repairs &amp; Maintenance</th></tr>
+          <tr><th scope="row">Critical spares review</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Maintenance planning</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Vendor coordination</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr><th scope="row">Stock management guidance</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Training &amp; Knowledge</th></tr>
+          <tr><th scope="row">Learning portal — fundamentals</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Learning portal — operations</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Annual refresher training</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Operator guidance &amp; mentoring</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Knowledge transfer workshops</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr><th scope="row">New staff onboarding support</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Lifecycle &amp; Obsolescence</th></tr>
+          <tr><th scope="row">Obsolescence review</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Upgrade recommendations</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Lifecycle roadmap</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Multi-year planning</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Budget forecasting</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Triage</th></tr>
+          <tr><th scope="row">Triage App access</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Knowledge base access</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Guided fault diagnosis</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Incident tracking</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Fault trend analysis</th><td></td><td class="plans__featured">✔</td><td>✔</td></tr>
+          <tr><th scope="row">Critical incident escalation</th><td></td><td class="plans__featured"></td><td>✔</td></tr>
+          <tr class="plans__cat"><th colspan="4" scope="colgroup">Engineering Access</th></tr>
+          <tr><th scope="row">Remote engineer access</th><td>✔</td><td class="plans__featured">✔</td><td>✔</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Escalation model -->
+    <div class="escalation reveal" aria-label="OSM escalation model">
+      <p class="escalation__intro">Every issue follows a structured path — engineering resource is deployed
+        only when triage and remote support cannot resolve the fault.</p>
+      <ol class="escalation__flow">
+        <li>Issue occurs</li>
+        <li>RPS triage — app, portal or phone</li>
+        <li>Guided diagnosis</li>
+        <li>Remote engineer escalation</li>
+        <li class="escalation__resolved">Resolved</li>
+      </ol>
+    </div>
+
+    <p class="plans__cta reveal"><a class="btn btn--amber" href="mailto:info@1rps.com?subject=OSM%20tier%20enquiry">Talk to us about pricing</a></p>
+  </section>
+
+  <!-- ============================================================
+       HARDWARE DIVIDER
+       ============================================================ -->
+  <div class="band reveal" role="img" aria-label="Polished stage rigging hardware in close-up">
+    <p class="band__line">The hardware behind the magic — <strong>inspected, maintained, show-ready.</strong></p>
   </div>
-</div>
 
-<h2>Type</h2>
-<p class="lead">Roboto for all text. IBM Plex Mono for figures, codes and small labels.</p>
-<div class="type-spec">
-  <div><code>--rps-size-2xl · 700</code><span style="font-size:var(--rps-size-2xl);font-weight:700;line-height:1.1">Kept show-ready</span></div>
-  <div><code>--rps-size-xl · 700</code><span style="font-size:var(--rps-size-xl);font-weight:700">System Health &amp; Reporting</span></div>
-  <div><code>--rps-size-lg · 500</code><span style="font-size:var(--rps-size-lg);font-weight:500">Riverside Theatre</span></div>
-  <div><code>--rps-size-base · 400</code><span>We inspect, monitor and audit system health, identify risks early and report clearly.</span></div>
-  <div><code>--rps-size-sm · muted</code><span style="font-size:var(--rps-size-sm);color:var(--rps-text-muted)">Last examined 14 May 2026 by a named engineer</span></div>
-  <div><code>mono · --rps-size-sm</code><span class="mono" style="font-size:var(--rps-size-sm)">SWL 2,000 kg · next due 14 Nov 2026</span></div>
-</div>
+  <!-- ============================================================
+       TRAINING
+       ============================================================ -->
+  <section class="section" id="training">
+    <p class="cue reveal"><span class="cue__num">CUE 4.0</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Training that <em>holds up under pressure</em></h2>
+    <div class="split">
+      <div class="reveal">
+        <p>We deliver structured theatre automation training — including the <strong>ABTT Silver Award in
+          automation</strong> — built on decades of West End, touring and large-scale ceremony experience.
+          Practical, real-world teaching that supports safer operation, improved reliability and greater
+          inspection readiness.</p>
+        <p>From operator fundamentals to maintenance and equipment care for end users, our courses give your
+          team the confidence to run the systems they rely on every night. Training is also built into our
+          <a href="#plans">PPM Programme</a> as standard.</p>
+        <a class="btn btn--outline" href="mailto:info@1rps.com?subject=Training%20enquiry">Book training</a>
+      </div>
+      <ul class="ticklist reveal">
+        <li>ABTT-accredited automation training</li>
+        <li>Maintenance &amp; equipment care for end users</li>
+        <li>Operator fundamentals and safe working practice</li>
+        <li>Delivered at your venue or our training partners</li>
+        <li>Documentation and learning platform included</li>
+      </ul>
+    </div>
+  </section>
 
-<footer>
-  Print this page (Ctrl+P) to check the light print palette. rps-tokens.css v1.0. Ring geometry from RPS-website.
-</footer>
-</div>
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section class="section" id="about">
+    <p class="cue reveal"><span class="cue__num">CUE 5.0</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Where every <em>detail matters</em></h2>
+    <div class="split">
+      <div class="reveal">
+        <p>Resolution Production Services was built by people who have spent their careers backstage — from
+          West End automation and performer flying to international ceremonies and touring productions. We
+          know what it costs when a system goes down mid-run, and what it takes to make sure it doesn't.</p>
+        <p>Today we're trusted specialists in automation systems for cruise ship theatres and live
+          entertainment venues across the UK and Europe, combining <a href="#pillars">hands-on engineering</a>,
+          <a href="#plans">compliance inspection</a> and <a href="#training">accredited training</a> under one roof.</p>
+      </div>
+      <div class="creds reveal">
+        <div class="cred"><span class="cred__big">30+</span><span>years in live entertainment</span></div>
+        <div class="cred"><span class="cred__big">UK + EU</span><span>venues and fleets served</span></div>
+        <div class="cred"><span class="cred__big">ABTT</span><span>accredited training provider</span></div>
+        <div class="cred"><span class="cred__big">LOLER</span><span>compliant inspection &amp; reporting</span></div>
+      </div>
+    </div>
+  </section>
 
-<script>
-document.querySelectorAll('.cvd button').forEach(b=>b.addEventListener('click',()=>{
-  document.body.classList.remove('sim-deut','sim-prot');
-  if(b.dataset.sim) document.body.classList.add(b.dataset.sim);
-  document.querySelectorAll('.cvd button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
-}));
-</script>
-</body>
-</html>
+  <!-- ============================================================
+       NEWS
+       To add a post: copy a news/<slug>.html page, edit it, drop the
+       square image in assets/img/news/, then copy a .news-card block below.
+       ============================================================ -->
+  <section class="section" id="news">
+    <p class="cue reveal"><span class="cue__num">CUE 5.5</span><span class="cue__state">GO</span></p>
+    <h2 class="section__title reveal">Latest <em>news</em></h2>
+    <p class="section__lead reveal">What we've been working on — shows, training, repairs and refurbishments.</p>
+
+    <div class="news reveal">
+      <a class="news-card" href="news/repairs-and-refurbs.html">
+        <span class="news-card__media"><img src="assets/img/news/repairs-and-refurbs.png" alt="RPS repairs and refurbishments — legacy drives" loading="lazy" width="600" height="600"></span>
+        <span class="news-card__body">
+          <span class="news-card__date">28 May 2026</span>
+          <h3 class="news-card__title">Repairs and Refurbs</h3>
+          <span class="news-card__excerpt">Not every automation problem needs a full replacement — we repair and refurbish legacy drives across the whole lifecycle.</span>
+          <span class="news-card__more">Read more →</span>
+        </span>
+      </a>
+      <a class="news-card" href="news/abtt-show-e52.html">
+        <span class="news-card__media"><img src="assets/img/news/abtt-show-e52.png" alt="RPS at the ABTT Theatre Show, Stand E52" loading="lazy" width="600" height="600"></span>
+        <span class="news-card__body">
+          <span class="news-card__date">28 May 2026</span>
+          <h3 class="news-card__title">RPS @ ABTT Show, Stand E52</h3>
+          <span class="news-card__excerpt">Come and find us at the ABTT Theatre Show — Stand E52, 3–4 June 2026, Alexandra Palace, London.</span>
+          <span class="news-card__more">Read more →</span>
+        </span>
+      </a>
+      <a class="news-card" href="news/booking-may-2026.html">
+        <span class="news-card__media"><img src="assets/img/news/booking-may-2026.png" alt="RPS automation maintenance training — booking from 2026" loading="lazy" width="600" height="600"></span>
+        <span class="news-card__body">
+          <span class="news-card__date">31 Dec 2025</span>
+          <h3 class="news-card__title">Booking from May 2026!!</h3>
+          <span class="news-card__excerpt">New hands-on automation maintenance &amp; equipment-care training, built with mechanical specialist Mark Hatt.</span>
+          <span class="news-card__more">Read more →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section class="contact" id="contact">
+    <p class="cue cue--contact"><span class="cue__num">CUE 6.0</span><span class="cue__state">GO</span></p>
+    <h2 class="contact__title reveal">Systems you can rely on.<br><span>People you can trust.</span></h2>
+    <p class="contact__lead reveal">Tell us about your venue, your systems and what's keeping you up at night.
+      We'll come back with a straight answer.</p>
+    <div class="contact__actions reveal">
+      <a class="btn btn--amber btn--xl" href="mailto:info@1rps.com?subject=Let%27s%20talk%20OSM">info@1RPS.com</a>
+      <a class="btn btn--outline btn--xl" href="tel:+440000000000">Call the team</a>
+    </div>
+    <div class="contact__social reveal">
+      <a href="https://www.linkedin.com/company/resolution-production-services/" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="https://www.facebook.com/profile.php?id=61579517594267" rel="noopener" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/1rps.2025/" rel="noopener" target="_blank">Instagram</a>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <img src="assets/img/rps-logo-full.png" alt="Resolution Production Services" class="footer__logo" width="280" loading="lazy">
+    <nav class="footer__links" aria-label="Footer navigation">
+      <a href="#home">Home</a>
+      <a href="#osm">OSM</a>
+      <a href="#pillars">Services</a>
+      <a href="#plans">Plans</a>
+      <a href="#training">Training</a>
+      <a href="#news">News</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p>© 2026 Resolution Production Services. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating quick actions (mobile-first) -->
+  <div class="fab" aria-label="Quick contact">
+    <a class="fab__btn fab__btn--call" href="tel:+440000000000" aria-label="Call RPS">📞</a>
+    <a class="fab__btn fab__btn--mail" href="mailto:info@1rps.com" aria-label="Email RPS">✉️</a>
+  </div>
+
+  <script src="script.js" defer></script>
+
+
+</body></html>
